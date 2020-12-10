@@ -1,10 +1,14 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 function App() {
   return (
-    <div className="App">
-      <h1>A new beginning</h1>
-    </div>
+    <Container fluid>
+      <Row className="justify-content-md-center">
+        <h1 className="text-center">Welcome to the Mask Trainer</h1>
+      </Row>
+    </Container>
   );
 }
 
