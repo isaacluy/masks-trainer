@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import LanguageSelector from './components/language-selector';
+import LanguageSelector from './components/LanguageSelector';
 import Row from 'react-bootstrap/Row';
 
 function App() {
