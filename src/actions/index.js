@@ -1,6 +1,6 @@
-export const selectLanguage = lang => {
+export const selectLanguage = href => {
     return {
         type: 'SELECTED_LANGUAGE',
-        payload: lang
+        payload: href
     }
 }

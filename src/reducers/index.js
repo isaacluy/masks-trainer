@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { languageListReducer } from './data';
 
-const selectedLanguageReducer = (selectedLangCode = null, action) => {
+const selectedLanguageReducer = (selectedLangHref = '/', action) => {
     if(action && action.type === 'SELECTED_LANGUAGE') {
         return action.payload;
     }
 
-    return selectedLangCode;
+    return selectedLangHref;
 };
 
 export default combineReducers({

@@ -1,20 +1,24 @@
 export const languageListReducer = () => {
     return [
         {
-            code: 'en',
-            text: 'English'
+            href: '/en',
+            text: 'English',
+            welcomeMessage: 'Welcome to the Mask Trainer'
         },
         {
-            code: 'es',
-            text: 'Español'
+            href: '/es',
+            text: 'Español',
+            welcomeMessage: 'Bienvenido al Entrenador de Máscaras'
         },
         {
-            code: 'pt',
-            text: 'Português'
+            href: '/pt',
+            text: 'Português',
+            welcomeMessage: 'Bem-vindo ao Treinador de Máscaras'
         },
         {
-            code: 'fr',
-            text: 'Français'
+            href: '/fr',
+            text: 'Français',
+            welcomeMessage: 'Bienvenue au formateur de masques'
         }
     ];
 };
