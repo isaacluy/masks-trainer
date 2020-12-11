@@ -15,11 +15,23 @@ class App extends React.Component {
     }
   }
 
+  getWelcomeMsg = () => {
+    let welcomeMsg = 'Welcome to the Mask Trainer';
+
+    this.props.languages.map(language => {
+      if(language.href === this.props.selectedLanguage) {
+        welcomeMsg = language.welcomeMessage;
+      }
+    });
+
+    return welcomeMsg;
+  }
+
   render = () => {
     return (
       <Container fluid>
         <Row className="justify-content-md-center">
-          <h1 className="text-center">Welcome to the Mask Trainer</h1>
+          <h1 className="text-center">{this.getWelcomeMsg()}</h1>
         </Row>
         <Row className="justify-content-md-center">
           <LanguageSelector />
