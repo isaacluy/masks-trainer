@@ -32,11 +32,11 @@ class App extends React.Component {
 
   render = () => {
     return (
-      <Container fluid>
-        <Row className="justify-content-center">
+      <Container fluid className="my-5">
+        <Row className="justify-content-center mb-4">
           <h1 id="welcome-message" className="text-center">{this.getWelcomeMsg()}</h1>
         </Row>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center mb-2">
           <LanguageSelector />
         </Row>
       </Container>

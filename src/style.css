@@ -2,15 +2,6 @@ body {
     background-color: snow;
 }
 
-.container-fluid {
-    margin-top: 50px;
-}
-
 #welcome-message {
     font-size: 3em;
-    margin-bottom: .75em;
-}
-
-.dropdown {
-    margin-bottom: 1em;    
 }
