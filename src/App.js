@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import LanguageSelector from './components/LanguageSelector';
 import { selectLanguage } from './actions';
+import { getPropertyFromLanguageObject } from './functions';
 
 class App extends React.Component {
   constructor(props){
@@ -17,9 +18,7 @@ class App extends React.Component {
 
   getWelcomeMsg = () => {
     const defaultWelcomeMsg = this.props.languages[0].welcomeMessage;
-    const currentlySelectedLanguage = this.props.languages.find(language => language.href === this.props.selectedLanguage);
-
-    return !currentlySelectedLanguage ? defaultWelcomeMsg : currentlySelectedLanguage.welcomeMessage;
+    return getPropertyFromLanguageObject(this.props, 'welcomeMessage', defaultWelcomeMsg);
   }
 
   render = () => {

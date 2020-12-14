@@ -4,22 +4,11 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { connect } from 'react-redux';
 
 import { selectLanguage } from '../actions';
+import { getPropertyFromLanguageObject } from '../functions';
 
 class LanguageSelector extends React.Component {
-    getSelectedLanguageText = () => {
-        let currentlySelectedLanguage = this.props.languages.find(language => this.props.selectedLanguage === language.href);
-
-        return currentlySelectedLanguage.text;
-    }
-
-    getDropdownTitle = () => {
-        const defaultDropdownTitle = 'Select a Language';
-
-        if(this.props.selectedLanguage === '/') {
-            return defaultDropdownTitle; 
-        }
-
-        return this.getSelectedLanguageText();
+    getDropdownTitle = () => { 
+        return getPropertyFromLanguageObject(this.props, 'text', 'Select a Lang');
     }
 
     onClick = event => {
