@@ -11,9 +11,18 @@ class App extends React.Component {
   constructor(props){
     super(props);
 
-    if(window.location.pathname && window.location.pathname !== '/') {
+    const isValidPath = this.checkValidPath(window.location.pathname);
+    if(!isValidPath) {
+      window.location = '/';
+    } else if(isValidPath && window.location.pathname !== '/') {
       props.selectLanguage(window.location.pathname);
     }
+  }
+
+  checkValidPath = pathname => {
+    const pathnameExists = this.props.languages.find(language => pathname === language.href);
+
+    return pathnameExists || pathname === '/' ? true : false;
   }
 
   getWelcomeMsg = () => {
