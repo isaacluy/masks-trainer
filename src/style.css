@@ -5,3 +5,8 @@ body {
 #welcome-message {
     font-size: 3em;
 }
+
+#masks-selector {
+    padding-left: 3%;
+    width:30%;
+}

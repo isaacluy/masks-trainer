@@ -1,4 +1,5 @@
 import React from 'react';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
 import { getSelectedLanguage } from '../functions';
@@ -8,13 +9,14 @@ class MasksSelector extends React.Component {
         const masksArray = [];
 
         for (let i = 1; i <= 6; i++) {
+            const helperArray = [];
+            
             if(languageObj.href === '/en') {
-                masksArray.push(`${i} ${languageObj.experience}`);
-                masksArray.push(`${i} ${languageObj.innocence}`);
+                helperArray.push(`${i} ${languageObj.experience}`, `${i} ${languageObj.innocence}`);
             } else {
-                masksArray.push(`${languageObj.experience} ${i}`);
-                masksArray.push(`${languageObj.innocence} ${i}`);
+                helperArray.push(`${languageObj.experience} ${i}`, `${languageObj.innocence} ${i}`);
             }
+            masksArray.push(helperArray);
         }
 
         return masksArray;
@@ -23,21 +25,27 @@ class MasksSelector extends React.Component {
     renderMasks = languageObj => {
         const masksArray = this.buildMasksArray(languageObj);
 
-        return masksArray.map((mask, index) => {
-            const kind = index % 2 === 0 ? 'experience' : 'innocence';
-            const regex = /[0-9]/g;
-            const num = mask.match(regex);
-
+        return masksArray.map((masksPair, index) => {
             return (
-                <Form.Check
-                    className="mb-3"
-                    id={`${num}-${kind}`}
-                    inline
-                    key={index}
-                    label={`${mask}`}
-                    type="checkbox"
-                />
-            )
+                <Form.Row key={index+1}>
+                    <Col>
+                        <Form.Check
+                            className="m-3"
+                            id={`${index+1}-experience`}
+                            label={`${masksPair[0]}`}
+                            type="checkbox"
+                        />
+                    </Col>
+                    <Col>
+                        <Form.Check
+                            className="m-3"
+                            id={`${index+1}-innocence`}
+                            label={`${masksPair[1]}`}
+                            type="checkbox"
+                        />
+                    </Col>
+                </Form.Row>
+            );
         });
     }
 
@@ -49,7 +57,7 @@ class MasksSelector extends React.Component {
 
     render = () => {
         return (
-            <Form>
+            <Form id="masks-selector">
                 {this.renderMasksSelector()}
             </Form>
         );
