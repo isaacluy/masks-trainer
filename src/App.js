@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 
 import LanguageSelector from './components/LanguageSelector';
 import { selectLanguage } from './actions';
-import { getPropertyFromLanguageObject } from './functions';
+import { 
+  getSelectedLanguage,
+  getPropertyFromLanguageObject
+} from './functions';
 
 class App extends React.Component {
   constructor(props){
@@ -20,7 +23,7 @@ class App extends React.Component {
   }
 
   checkValidPath = pathname => {
-    const pathnameExists = this.props.languages.find(language => pathname === language.href);
+    const pathnameExists = getSelectedLanguage(this.props.languages, pathname);
 
     return pathnameExists || pathname === '/' ? true : false;
   }
