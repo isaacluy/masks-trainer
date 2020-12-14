@@ -7,16 +7,16 @@ import { selectLanguage } from '../actions';
 
 class LanguageSelector extends React.Component {
     getSelectedLanguageText = () => {
-        return this.props.languages.map(language => {
-            if(this.props.selectedLanguage === language.href) {
-                return language.text;
-            }
-        });
+        let currentlySelectedLanguage = this.props.languages.find(language => this.props.selectedLanguage === language.href);
+
+        return currentlySelectedLanguage.text;
     }
 
     getDropdownTitle = () => {
+        const defaultDropdownTitle = 'Select a Language';
+
         if(this.props.selectedLanguage === '/') {
-            return 'Select a Language'; 
+            return defaultDropdownTitle; 
         }
 
         return this.getSelectedLanguageText();

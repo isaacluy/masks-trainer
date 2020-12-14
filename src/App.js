@@ -16,15 +16,10 @@ class App extends React.Component {
   }
 
   getWelcomeMsg = () => {
-    let defaultWelcomeMsg = this.props.languages[0].welcomeMessage;
+    const defaultWelcomeMsg = this.props.languages[0].welcomeMessage;
+    const currentlySelectedLanguage = this.props.languages.find(language => language.href === this.props.selectedLanguage);
 
-    this.props.languages.map(language => {
-      if(language.href === this.props.selectedLanguage) {
-        defaultWelcomeMsg = language.welcomeMessage;
-      }
-    });
-
-    return defaultWelcomeMsg;
+    return !currentlySelectedLanguage ? defaultWelcomeMsg : currentlySelectedLanguage.welcomeMessage;
   }
 
   render = () => {
