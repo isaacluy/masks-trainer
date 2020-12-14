@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import { connect } from 'react-redux';
 
 import LanguageSelector from './components/LanguageSelector';
+import MasksSelector from './components/MasksSelector';
 import { selectLanguage } from './actions';
 import { 
   getSelectedLanguage,
@@ -37,10 +38,21 @@ class App extends React.Component {
     return (
       <Container fluid className="my-5">
         <Row className="justify-content-center mb-4">
-          <h1 id="welcome-message" className="text-center">{this.getWelcomeMsg()}</h1>
+          <h1
+            id="welcome-message"
+            className="text-center"
+          >
+            {this.getWelcomeMsg()}
+          </h1>
         </Row>
         <Row className="justify-content-center mb-2">
           <LanguageSelector />
+        </Row>
+        <Row className="justify-content-center mb-2">
+          <MasksSelector
+            languages={this.props.languages}
+            selectedLanguage={this.props.selectedLanguage}
+          />
         </Row>
       </Container>
     );
