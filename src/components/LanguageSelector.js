@@ -12,8 +12,11 @@ class LanguageSelector extends React.Component {
     }
 
     onClick = event => {
-        event.preventDefault();
+        if(event.metaKey || event.ctrlKey) {
+            return;
+        }
 
+        event.preventDefault();
         const href = event ? event.target.attributes.href.value : '/';
 
         this.props.selectLanguage(href);
