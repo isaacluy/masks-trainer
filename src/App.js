@@ -16,15 +16,15 @@ class App extends React.Component {
   }
 
   getWelcomeMsg = () => {
-    let welcomeMsg = 'Welcome to the Mask Trainer';
+    let defaultWelcomeMsg = this.props.languages[0].welcomeMessage;
 
     this.props.languages.map(language => {
       if(language.href === this.props.selectedLanguage) {
-        welcomeMsg = language.welcomeMessage;
+        defaultWelcomeMsg = language.welcomeMessage;
       }
     });
 
-    return welcomeMsg;
+    return defaultWelcomeMsg;
   }
 
   render = () => {
