@@ -33,10 +33,10 @@ class App extends React.Component {
   render = () => {
     return (
       <Container fluid>
-        <Row className="justify-content-md-center">
-          <h1 className="text-center">{this.getWelcomeMsg()}</h1>
+        <Row className="justify-content-center">
+          <h1 id="welcome-message" className="text-center">{this.getWelcomeMsg()}</h1>
         </Row>
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <LanguageSelector />
         </Row>
       </Container>

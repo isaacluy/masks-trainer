@@ -3,7 +3,7 @@ export const languageListReducer = () => {
         {
             href: '/en',
             text: 'English',
-            welcomeMessage: 'Welcome to the Mask Trainer'
+            welcomeMessage: 'Welcome to the Masks Trainer'
         },
         {
             href: '/es',
