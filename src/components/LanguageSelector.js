@@ -8,7 +8,7 @@ import { getPropertyFromLanguageObject } from '../functions';
 
 class LanguageSelector extends React.Component {
     getDropdownTitle = () => { 
-        return getPropertyFromLanguageObject(this.props, 'text', 'Select a Lang');
+        return getPropertyFromLanguageObject(this.props, 'text', 'Select a Language');
     }
 
     onClick = event => {
@@ -18,7 +18,6 @@ class LanguageSelector extends React.Component {
 
         event.preventDefault();
         const href = event ? event.target.attributes.href.value : '/';
-
         this.props.selectLanguage(href);
         window.history.pushState({}, '', href);
     }
