@@ -63,7 +63,10 @@ class App extends React.Component {
           />
         </Row>
         <Row className="justify-content-center mb-2">
-          {this.props.masks}
+          <ul>
+            <li>{'Selected Masks:'}</li>
+            {this.props.masks.map((mask, index) => <li key={index}>{mask}</li>)}
+          </ul>
         </Row>
       </Container>
     );
