@@ -5,6 +5,14 @@ import Form from 'react-bootstrap/Form';
 import { getSelectedLanguage } from '../functions';
 
 class MasksSelector extends React.Component {
+    onClick = event => {
+        if(event.target.checked) {
+            this.props.addMask(event.target.id);
+        } else if(!event.target.checked) {
+            this.props.removeMask(event.target.id);
+        }
+    }
+
     buildMasksArray = languageObj => {
         const masksArray = [];
 
@@ -33,6 +41,7 @@ class MasksSelector extends React.Component {
                             className="m-3"
                             id={`${index+1}-experience`}
                             label={`${masksPair[0]}`}
+                            onClick={this.onClick}
                             type="checkbox"
                         />
                     </Col>
@@ -41,6 +50,7 @@ class MasksSelector extends React.Component {
                             className="m-3"
                             id={`${index+1}-innocence`}
                             label={`${masksPair[1]}`}
+                            onClick={this.onClick}
                             type="checkbox"
                         />
                     </Col>

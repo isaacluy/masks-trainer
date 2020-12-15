@@ -5,7 +5,13 @@ import { connect } from 'react-redux';
 
 import LanguageSelector from './components/LanguageSelector';
 import MasksSelector from './components/MasksSelector';
-import { selectLanguage } from './actions';
+
+import {
+  addMask,
+  removeMask,
+  selectLanguage
+} from './actions';
+
 import { 
   getSelectedLanguage,
   getPropertyFromLanguageObject
@@ -50,9 +56,14 @@ class App extends React.Component {
         </Row>
         <Row className="justify-content-center mb-2">
           <MasksSelector
+            addMask={this.props.addMask}
             languages={this.props.languages}
+            removeMask={this.props.removeMask}
             selectedLanguage={this.props.selectedLanguage}
           />
+        </Row>
+        <Row className="justify-content-center mb-2">
+          {this.props.masks}
         </Row>
       </Container>
     );
@@ -62,11 +73,16 @@ class App extends React.Component {
 const mapStateToProps = state => {
     return { 
         languages: state.languages,
+        masks:state.masks,
         selectedLanguage: state.selectedLanguage
     }
 }
 
 export default connect(
   mapStateToProps,
-  { selectLanguage }
-  )(App);
+  {
+    addMask,
+    removeMask,
+    selectLanguage
+  }
+)(App);
