@@ -7,6 +7,5 @@ body {
 }
 
 #masks-selector {
-    padding-left: 3%;
-    width:30%;
+    min-width: 303px;
 }
