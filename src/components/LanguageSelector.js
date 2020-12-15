@@ -1,9 +1,7 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { connect } from 'react-redux';
 
-import { selectLanguage } from '../actions';
 import { getPropertyFromLanguageObject } from '../functions';
 
 class LanguageSelector extends React.Component {
@@ -49,14 +47,4 @@ class LanguageSelector extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return { 
-        languages: state.languages,
-        selectedLanguage: state.selectedLanguage
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    { selectLanguage }
-)(LanguageSelector);
+export default LanguageSelector;

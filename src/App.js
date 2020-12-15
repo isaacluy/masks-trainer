@@ -52,9 +52,13 @@ class App extends React.Component {
           </h1>
         </Row>
         <Row className="justify-content-center mb-2">
-          <LanguageSelector />
+          <LanguageSelector
+            languages={this.props.languages}
+            selectLanguage={this.props.selectLanguage}
+            selectedLanguage={this.props.selectedLanguage}
+          />
         </Row>
-        <Row className="justify-content-center mb-2">
+        <Row className="justify-content-center mb-4">
           <MasksSelector
             addMask={this.props.addMask}
             languages={this.props.languages}
@@ -64,7 +68,7 @@ class App extends React.Component {
         </Row>
         <Row className="justify-content-center mb-2">
           <ul>
-            <li>{'Selected Masks:'}</li>
+            <li>{(this.props.selectedLanguage && this.props.selectedLanguage !== '/') ? 'Selected Masks:' : null}</li>
             {this.props.masks.map((mask, index) => <li key={index}>{mask}</li>)}
           </ul>
         </Row>
