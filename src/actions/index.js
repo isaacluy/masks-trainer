@@ -1,7 +1,7 @@
-export const selectLanguage = href => {
+export const selectLanguage = obj => {
     return {
         type: 'SELECTED_LANGUAGE',
-        payload: href
+        payload: obj
     }
 }
 

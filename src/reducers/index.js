@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { languageListReducer } from './data';
 
-const selectedLanguageReducer = (selectedLangHref = '/', action) => {
+const selectedLanguageReducer = (selectedLang = null, action) => {
     if(action && action.type === 'SELECTED_LANGUAGE') {
         return action.payload;
     }
 
-    return selectedLangHref;
+    return selectedLang;
 }
 
 const selectedMasksReducer = (masks = [], action) => {

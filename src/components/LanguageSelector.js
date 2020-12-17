@@ -2,11 +2,11 @@ import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
-import { getPropertyFromLanguageObject } from '../functions';
+import { getSelectedLanguage } from '../functions';
 
 class LanguageSelector extends React.Component {
-    getDropdownTitle = () => { 
-        return getPropertyFromLanguageObject(this.props, 'text', 'Select a Language');
+    getDropdownTitle = () => {
+        return this.props.selectedLanguage ? this.props.selectedLanguage.text : 'Select a Language';
     }
 
     onClick = event => {
@@ -16,7 +16,8 @@ class LanguageSelector extends React.Component {
 
         event.preventDefault();
         const href = event ? event.target.attributes.href.value : '/';
-        this.props.selectLanguage(href);
+        const newSelectedLanguage = getSelectedLanguage(this.props.languages, href);
+        this.props.selectLanguage(newSelectedLanguage);
         window.history.pushState({}, '', href);
     }
 

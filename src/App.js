@@ -18,21 +18,16 @@ import {
 } from './functions';
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
+  componentDidMount = () => {
+    const selectedLanguageObj = getSelectedLanguage(this.props.languages, window.location.pathname);
 
-    const isValidPath = this.checkValidPath(window.location.pathname);
-    if(!isValidPath) {
+    if(window.location.pathname !== '/') {
+      if(!selectedLanguageObj) {
       window.location = '/';
-    } else if(isValidPath && window.location.pathname !== '/') {
-      props.selectLanguage(window.location.pathname);
+      } else {
+        this.props.selectLanguage(selectedLanguageObj);
     }
   }
-
-  checkValidPath = pathname => {
-    const pathnameExists = getSelectedLanguage(this.props.languages, pathname);
-
-    return pathnameExists || pathname === '/' ? true : false;
   }
 
   getWelcomeMsg = () => {
@@ -41,7 +36,7 @@ class App extends React.Component {
   }
 
   render = () => {
-    return (
+    return this.props.languages ? (
       <Container fluid className="my-5">
         <Row className="justify-content-center mb-4">
           <h1
@@ -73,7 +68,7 @@ class App extends React.Component {
           </ul>
         </Row>
       </Container>
-    );
+    ) : 'Loading...';
   }
 }
 
