@@ -32,7 +32,7 @@ class App extends React.Component {
 
   getWelcomeMsg = () => {
     const defaultWelcomeMsg = this.props.languages[0].welcomeMessage;
-    return getPropertyFromLanguageObject(this.props, 'welcomeMessage', defaultWelcomeMsg);
+    return getPropertyFromLanguageObject(this.props.selectedLanguage, 'welcomeMessage', defaultWelcomeMsg);
   }
 
   render = () => {

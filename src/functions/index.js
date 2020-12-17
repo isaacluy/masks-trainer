@@ -3,9 +3,7 @@ export const getSelectedLanguage = (languages, href) => {
 }
 
 export const getPropertyFromLanguageObject = 
-    (props, property, defaultPropertyValue) => {
-        const currentlySelectedLanguage = getSelectedLanguage(props.languages, props.selectedLanguage);
-
+    (currentlySelectedLanguage, property, defaultPropertyValue) => {
         return !currentlySelectedLanguage ? defaultPropertyValue : currentlySelectedLanguage[property];
     }
 
