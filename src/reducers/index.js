@@ -11,13 +11,11 @@ const selectedLanguageReducer = (selectedLangHref = '/', action) => {
 
 const selectedMasksReducer = (masks = [], action) => {
     if(action && action.type === 'ADD_MASK') {
-        let newMasks = Array.from(masks);
-        newMasks.push(action.payload);
-        return newMasks;
+        return [...masks, action.payload];
     } else if (action && action.type === 'REMOVE_MASK') {
         const index = masks.indexOf(action.payload);
         if (index > -1) {
-            const newMasks = Array.from(masks);
+            const newMasks = [...masks];
             newMasks.splice(index, 1);
             return newMasks;
         }
