@@ -3,9 +3,25 @@ export const getSelectedLanguage = (languages, href) => {
 }
 
 export const getPropertyFromLanguageObject = 
-    (props, property, defaultMessage) => {
-        const defaultMsg = defaultMessage ? defaultMessage : '';
-        const currentlySelectedLanguage = props.languages.find(language => props.selectedLanguage === language.href);
+    (props, property, defaultPropertyValue) => {
+        const currentlySelectedLanguage = getSelectedLanguage(props.languages, props.selectedLanguage);
 
-        return !currentlySelectedLanguage ? defaultMsg : currentlySelectedLanguage[property];
+        return !currentlySelectedLanguage ? defaultPropertyValue : currentlySelectedLanguage[property];
     }
+
+export const buildMasksArray = languageObj => {
+    const masksArray = [];
+
+    for (let i = 1; i <= 6; i++) {
+        const helperArray = [];
+        
+        if(languageObj.href === '/en') {
+            helperArray.push(`${i} ${languageObj.experience}`, `${i} ${languageObj.innocence}`);
+        } else {
+            helperArray.push(`${languageObj.experience} ${i}`, `${languageObj.innocence} ${i}`);
+        }
+        masksArray.push(helperArray);
+    }
+
+    return masksArray;
+}
