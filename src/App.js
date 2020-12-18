@@ -23,11 +23,11 @@ class App extends React.Component {
 
     if(window.location.pathname !== '/') {
       if(!selectedLanguageObj) {
-      window.location = '/';
+        window.location = '/';
       } else {
         this.props.selectLanguage(selectedLanguageObj);
+      }
     }
-  }
   }
 
   getWelcomeMsg = () => {
@@ -57,6 +57,7 @@ class App extends React.Component {
           <MasksSelector
             addMask={this.props.addMask}
             languages={this.props.languages}
+            masks={this.props.masks}
             removeMask={this.props.removeMask}
             selectedLanguage={this.props.selectedLanguage}
           />

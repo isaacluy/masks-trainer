@@ -1,32 +1,40 @@
 export const languageListReducer = () => {
     return [
         {
-            href: '/en',
             text: 'English',
-            welcomeMessage: 'Welcome to the Masks Trainer',
             experience: 'Experience',
-            innocence: 'Innocence'
+            href: '/en',
+            innocence: 'Innocence',
+            selectAll: 'Select All',
+            selectNone: 'Select None',
+            welcomeMessage: 'Welcome to the Masks Trainer'
         },
         {
-            href: '/es',
             text: 'Español',
-            welcomeMessage: 'Bienvenido al Entrenador de Máscaras',
             experience: 'Experiencia',
-            innocence: 'Inocencia'
+            href: '/es',
+            innocence: 'Inocencia',
+            selectAll: 'Seleccionar todas',
+            selectNone: 'Descartar todas',
+            welcomeMessage: 'Bienvenido al Entrenador de Máscaras'
         },
         {
-            href: '/pt',
             text: 'Português',
-            welcomeMessage: 'Bem-vindo ao Treinador de Máscaras',
             experience: 'Experiência',
-            innocence: 'Inocência'
+            href: '/pt',
+            innocence: 'Inocência',
+            selectAll: 'Seleccionar todas',
+            selectNone: 'Descartar todas',
+            welcomeMessage: 'Bem-vindo ao Treinador de Máscaras'
         },
         {
-            href: '/fr',
             text: 'Français',
-            welcomeMessage: 'Bienvenue au formateur de masques',
             experience : 'Expérience',
-            innocence : 'Innocence'
+            href: '/fr',
+            innocence : 'Innocence',
+            selectAll: 'Choisir tous',
+            selectNone: 'Effacer tous',
+            welcomeMessage: 'Bienvenue au formateur de masques'
         }
     ];
 };
