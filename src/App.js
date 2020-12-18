@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import LanguageSelector from './components/LanguageSelector';
 import MasksSelector from './components/MasksSelector';
 import StateDebugger from './components/StateDebugger';
+import StartButton from './components/StartButton';
 
 import {
   addMask,
@@ -60,6 +61,12 @@ class App extends React.Component {
             languages={this.props.languages}
             masks={this.props.masks}
             removeMask={this.props.removeMask}
+            selectedLanguage={this.props.selectedLanguage}
+          />
+        </Row>
+        <Row className="justify-content-center mb-4">
+          <StartButton
+            masks={this.props.masks}
             selectedLanguage={this.props.selectedLanguage}
           />
         </Row>

@@ -7,6 +7,7 @@ export const languageListReducer = () => {
             innocence: 'Innocence',
             selectAll: 'Select All',
             selectNone: 'Select None',
+            startTraining: 'Start Training',
             welcomeMessage: 'Welcome to the Masks Trainer'
         },
         {
@@ -16,6 +17,7 @@ export const languageListReducer = () => {
             innocence: 'Inocencia',
             selectAll: 'Seleccionar todas',
             selectNone: 'Descartar todas',
+            startTraining: 'Comenzar Entrenamiento',
             welcomeMessage: 'Bienvenido al Entrenador de Máscaras'
         },
         {
@@ -25,6 +27,7 @@ export const languageListReducer = () => {
             innocence: 'Inocência',
             selectAll: 'Seleccionar todas',
             selectNone: 'Descartar todas',
+            startTraining: 'Começar Treino',
             welcomeMessage: 'Bem-vindo ao Treinador de Máscaras'
         },
         {
@@ -34,6 +37,7 @@ export const languageListReducer = () => {
             innocence : 'Innocence',
             selectAll: 'Choisir tous',
             selectNone: 'Effacer tous',
+            startTraining: 'Demarrer la formation',
             welcomeMessage: 'Bienvenue au formateur de masques'
         }
     ];
