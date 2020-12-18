@@ -35,24 +35,28 @@ class MasksSelector extends React.Component {
     renderSelectAllButton = selectedLanguageObj => {
         return (
             <Form.Row>
-                <Col>
-                    <Button
-                        onClick={this.onSelectAllButtonClick}
-                        size="sm"
-                        variant="success"
-                    >
-                        {selectedLanguageObj.selectAll}
-                    </Button>
-                </Col>
-                <Col>
-                    <Button
-                        onClick={this.onSelectNoneButtonClick}
-                        size="sm"
-                        variant="danger"
-                    >
-                        {selectedLanguageObj.selectNone}
-                    </Button>
-                </Col>
+                <div className="d-flex container">
+                    <Col>
+                        <Button
+                            className="w-100"
+                            onClick={this.onSelectAllButtonClick}
+                            size="sm"
+                            variant="success"
+                        >
+                            {selectedLanguageObj.selectAll}
+                        </Button>
+                    </Col>
+                    <Col>
+                        <Button
+                            className="w-100"
+                            onClick={this.onSelectNoneButtonClick}
+                            size="sm"
+                            variant="danger"
+                        >
+                            {selectedLanguageObj.selectNone}
+                        </Button>
+                    </Col>
+                </div>
             </Form.Row>
         );
     }
