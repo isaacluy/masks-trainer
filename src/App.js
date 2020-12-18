@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import LanguageSelector from './components/LanguageSelector';
 import MasksSelector from './components/MasksSelector';
+import StateDebugger from './components/StateDebugger';
 
 import {
   addMask,
@@ -62,11 +63,12 @@ class App extends React.Component {
             selectedLanguage={this.props.selectedLanguage}
           />
         </Row>
-        <Row className="justify-content-center mb-2">
-          <ul>
-            <li>{(this.props.selectedLanguage && this.props.selectedLanguage !== '/') ? 'Selected Masks:' : null}</li>
-            {this.props.masks.map((mask, index) => <li key={index}>{mask}</li>)}
-          </ul>
+        <Row className="m-2">
+          <StateDebugger
+            languages={this.props.languages}
+            masks={this.props.masks}
+            selectedLanguage={this.props.selectedLanguage}
+          />
         </Row>
       </Container>
     ) : 'Loading...';
