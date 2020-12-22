@@ -6,6 +6,7 @@ class StateDebugger extends React.Component {
         return (
             <div className="row justify-content-center">
                 <Col className="col-3 text-center">
+                    <h3>DEBUGGER</h3>
                     <ul>
                         <li>
                             {
@@ -23,6 +24,7 @@ class StateDebugger extends React.Component {
                     </ul>
                 </Col>
                 <Col className="col-3 text-center">
+                    <h3>DEBUGGER</h3>
                     <p>
                         {
                             (
@@ -39,6 +41,12 @@ class StateDebugger extends React.Component {
                     </p>
                     <p>
                         {`Training Started?: ${this.props.trainingStarted}`}
+                    </p>
+                    <p>
+                        {`Current Mask: ${this.props.currentMask}`}
+                    </p>
+                    <p>
+                        {`Mask Names: ${this.props.masksNames}`}
                     </p>
                 </Col>
             </div>
