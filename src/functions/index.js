@@ -33,17 +33,17 @@ export const buildMasksIdsArray = languageObj => {
     return masksIdsArray;
 }
 
+export const getPropertyFromLanguageObject = 
+    (currentlySelectedLanguage, property, defaultPropertyValue) => {
+        return !currentlySelectedLanguage ? defaultPropertyValue : currentlySelectedLanguage[property];
+    }
+
 export const getRandomMask = masksNames => {
     const numberOfMasks = masksNames.length;
     const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
 
     return masksNames[randomMaskIndex];
 }
-
-export const getPropertyFromLanguageObject = 
-    (currentlySelectedLanguage, property, defaultPropertyValue) => {
-        return !currentlySelectedLanguage ? defaultPropertyValue : currentlySelectedLanguage[property];
-    }
 
 export const getSelectedLanguage = (languages, href) => {
     return languages.find(language => language.href === href);
