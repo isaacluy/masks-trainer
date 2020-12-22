@@ -36,13 +36,16 @@ class App extends React.Component {
         languages={this.props.languages}
         masks={this.props.masks}
         removeMask={this.props.removeMask}
-        selectedLanguage={this.props.selectedLanguage}
         selectLanguage={this.props.selectLanguage}
+        selectedLanguage={this.props.selectedLanguage}
         toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
       />
     ) : (
       <TrainingApp
+        masks={this.props.masks}
+        selectedLanguage={this.props.selectedLanguage}
+        toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
       />
     )
