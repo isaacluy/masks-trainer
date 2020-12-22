@@ -3,10 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { connect } from 'react-redux';
 
-import LanguageSelector from './components/LanguageSelector';
-import MasksSelector from './components/MasksSelector';
 import StateDebugger from './components/StateDebugger';
-import StartButton from './components/StartButton';
+import WelcomeApp from './components/WelcomeApp';
 
 import {
   addMask,
@@ -15,10 +13,7 @@ import {
   toggleTraining
 } from './actions';
 
-import { 
-  getSelectedLanguage,
-  getPropertyFromLanguageObject
-} from './functions';
+import { getSelectedLanguage } from './functions';
 
 class App extends React.Component {
   componentDidMount = () => {
@@ -33,55 +28,44 @@ class App extends React.Component {
     }
   }
 
-  getWelcomeMsg = () => {
-    const defaultWelcomeMsg = this.props.languages[0].welcomeMessage;
-    return getPropertyFromLanguageObject(this.props.selectedLanguage, 'welcomeMessage', defaultWelcomeMsg);
+  renderWelcomeOrTraining = () => {
+    return !this.props.trainingStarted ? (
+      <WelcomeApp
+        addMask={this.props.addMask}
+        languages={this.props.languages}
+        masks={this.props.masks}
+        removeMask={this.props.removeMask}
+        selectedLanguage={this.props.selectedLanguage}
+        selectLanguage={this.props.selectLanguage}
+        toggleTraining={this.props.toggleTraining}
+        trainingStarted={this.props.trainingStarted}
+      />
+    ) : (
+      <Container fluid className="my-5">
+        <Row className="justify-content-center mb-4">
+          <h1 className="text-center">
+            {'SHOW THE TRAINING APP'}
+          </h1>
+        </Row>
+      </Container>
+    )
   }
 
   render = () => {
     return this.props.languages ? (
-      <Container fluid className="my-5">
-        <Row className="justify-content-center mb-4">
-          <h1
-            id="welcome-message"
-            className="text-center"
-          >
-            {this.getWelcomeMsg()}
-          </h1>
-        </Row>
-        <Row className="justify-content-center mb-2">
-          <LanguageSelector
-            languages={this.props.languages}
-            selectLanguage={this.props.selectLanguage}
-            selectedLanguage={this.props.selectedLanguage}
-          />
-        </Row>
-        <Row className="justify-content-center mb-4">
-          <MasksSelector
-            addMask={this.props.addMask}
-            languages={this.props.languages}
-            masks={this.props.masks}
-            removeMask={this.props.removeMask}
-            selectedLanguage={this.props.selectedLanguage}
-          />
-        </Row>
-        <Row className="justify-content-center mb-4">
-          <StartButton
-            masks={this.props.masks}
-            selectedLanguage={this.props.selectedLanguage}
-            toggleTraining={this.props.toggleTraining}
-            trainingStarted={this.props.trainingStarted}
-          />
-        </Row>
-        <Row className="m-2">
-          <StateDebugger
-            languages={this.props.languages}
-            masks={this.props.masks}
-            selectedLanguage={this.props.selectedLanguage}
-            trainingStarted={this.props.trainingStarted}
-          />
-        </Row>
-      </Container>
+      <div id="main-stage">
+        {this.renderWelcomeOrTraining()}
+        <Container fluid className="my-5">
+          <Row className="m-2">
+            <StateDebugger
+              languages={this.props.languages}
+              masks={this.props.masks}
+              selectedLanguage={this.props.selectedLanguage}
+              trainingStarted={this.props.trainingStarted}
+            />
+          </Row>
+        </Container>
+      </div>
     ) : 'Loading...';
   }
 }
