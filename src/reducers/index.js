@@ -24,8 +24,17 @@ const selectedMasksReducer = (masks = [], action) => {
     return masks;
 }
 
+const toggleTrainingReducer = (currentState = false, action) => {
+    if(action && action.type === 'TOGGLE_TRAINING') {
+        return !currentState;
+    }
+
+    return currentState;
+}
+
 export default combineReducers({
     languages: languageListReducer,
     masks: selectedMasksReducer,
-    selectedLanguage: selectedLanguageReducer
+    selectedLanguage: selectedLanguageReducer,
+    trainingStarted: toggleTrainingReducer
 });

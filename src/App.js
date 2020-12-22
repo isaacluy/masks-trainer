@@ -11,7 +11,8 @@ import StartButton from './components/StartButton';
 import {
   addMask,
   removeMask,
-  selectLanguage
+  selectLanguage,
+  toggleTraining
 } from './actions';
 
 import { 
@@ -75,6 +76,7 @@ class App extends React.Component {
             languages={this.props.languages}
             masks={this.props.masks}
             selectedLanguage={this.props.selectedLanguage}
+            trainingStarted={this.props.trainingStarted}
           />
         </Row>
       </Container>
@@ -86,7 +88,8 @@ const mapStateToProps = state => {
     return { 
         languages: state.languages,
         masks:state.masks,
-        selectedLanguage: state.selectedLanguage
+        selectedLanguage: state.selectedLanguage,
+        trainingStarted: state.trainingStarted
     }
 }
 
@@ -95,6 +98,7 @@ export default connect(
   {
     addMask,
     removeMask,
-    selectLanguage
+    selectLanguage,
+    toggleTraining
   }
 )(App);

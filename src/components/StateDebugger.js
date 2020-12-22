@@ -37,6 +37,9 @@ class StateDebugger extends React.Component {
                     <p>
                         {`Languages: ${this.props.languages.map(lang => lang.text)}`}
                     </p>
+                    <p>
+                        {`Training Started?: ${this.props.trainingStarted}`}
+                    </p>
                 </Col>
             </div>
         )
