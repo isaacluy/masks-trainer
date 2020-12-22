@@ -69,6 +69,8 @@ class App extends React.Component {
           <StartButton
             masks={this.props.masks}
             selectedLanguage={this.props.selectedLanguage}
+            toggleTraining={this.props.toggleTraining}
+            trainingStarted={this.props.trainingStarted}
           />
         </Row>
         <Row className="m-2">

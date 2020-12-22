@@ -3,19 +3,15 @@ import Button from 'react-bootstrap/Button';
 
 class StartButton extends React.Component {
     onClick = () => {
-        console.log('');
-        console.log('');
-        console.log('>>> START THE TARINING!!! >>>');
-        console.log('');
-        console.log('');
+        this.props.toggleTraining(this.props.trainingStarted);
+    }
+
+    getButtonState = () => {
+        return this.props.masks.length >= 1 ? false : true;
     }
 
     render = () => {
-        let disableButton = true;
-
-        if(this.props.masks.length >= 1) {
-            disableButton = false;
-        }
+        let disableButton = this.getButtonState();
 
         return this.props.selectedLanguage ? (
             <Button
