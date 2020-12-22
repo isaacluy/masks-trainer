@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import { connect } from 'react-redux';
 
 import StateDebugger from './components/StateDebugger';
+import TrainingApp from './components/TrainingApp';
 import WelcomeApp from './components/WelcomeApp';
 
 import {
@@ -41,13 +42,9 @@ class App extends React.Component {
         trainingStarted={this.props.trainingStarted}
       />
     ) : (
-      <Container fluid className="my-5">
-        <Row className="justify-content-center mb-4">
-          <h1 className="text-center">
-            {'SHOW THE TRAINING APP'}
-          </h1>
-        </Row>
-      </Container>
+      <TrainingApp
+        trainingStarted={this.props.trainingStarted}
+      />
     )
   }
 
