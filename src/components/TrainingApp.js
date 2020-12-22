@@ -12,19 +12,17 @@ class TrainingApp extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            currentMask: 'NO MASK SELECTED',
-            masksNames: this.props.masks.map(mask => maskNameConverter(mask, this.props.selectedLanguage))
-        };
+        const masksNames = this.props.masks.map(mask => maskNameConverter(mask, this.props.selectedLanguage))
+        this.props.createMasksNames(masksNames);
+    }
+
     }
 
     setNextMask = () => {
         const numberOfMasks = this.props.masks.length;
         const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
 
-        this.setState({
-            currentMask: this.state.masksNames[randomMaskIndex]
-        });
+        this.props.setCurrentMask(this.props.masksNames[randomMaskIndex]);
     }
 
     render = () => {
@@ -32,7 +30,7 @@ class TrainingApp extends React.Component {
             <Container fluid className="my-5">
                 <Row className="justify-content-center mb-4">
                 <h1 className="text-center">
-                        {this.state.currentMask}
+                        {this.props.currentMask}
                 </h1>
                 </Row>
                 <Row className="justify-content-center mb-4">

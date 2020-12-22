@@ -45,8 +45,12 @@ class App extends React.Component {
       />
     ) : (
       <TrainingApp
+        createMasksNames={this.props.createMasksNames}
+        currentMask={this.props.currentMask}
         masks={this.props.masks}
+        masksNames={this.props.masksNames}
         selectedLanguage={this.props.selectedLanguage}
+        setCurrentMask={this.props.setCurrentMask}
         toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
       />
@@ -75,7 +79,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { 
+    return {
         currentMask: state.currentMask,
         languages: state.languages,
         masks:state.masks,
