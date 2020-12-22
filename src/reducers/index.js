@@ -1,6 +1,14 @@
 import { combineReducers } from 'redux';
 import { languageListReducer } from './data';
 
+const currentMaskReducer = (maskName = '', action) => {
+    if(action && action.type === 'SET_CURRENT_MASK') {
+        return action.payload;
+    }
+
+    return maskName;
+}
+
 const selectedLanguageReducer = (selectedLang = null, action) => {
     if(action && action.type === 'SELECTED_LANGUAGE') {
         return action.payload;
@@ -24,6 +32,14 @@ const selectedMasksReducer = (masks = [], action) => {
     return masks;
 }
 
+const selectedMasksNamesReducer = (masksNames = [], action) => {
+    if(action && action.type === 'CREATE_MASKS_NAMES') {
+        return action.payload;
+    }
+
+    return masksNames;
+}
+
 const toggleTrainingReducer = (currentState = false, action) => {
     if(action && action.type === 'TOGGLE_TRAINING') {
         return !currentState;
@@ -33,8 +49,10 @@ const toggleTrainingReducer = (currentState = false, action) => {
 }
 
 export default combineReducers({
+    currentMask: currentMaskReducer,
     languages: languageListReducer,
     masks: selectedMasksReducer,
+    masksNames: selectedMasksNamesReducer,
     selectedLanguage: selectedLanguageReducer,
     trainingStarted: toggleTrainingReducer
 });
