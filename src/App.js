@@ -54,6 +54,8 @@ class App extends React.Component {
         masksNames={this.props.masksNames}
         selectedLanguage={this.props.selectedLanguage}
         setCurrentMask={this.props.setCurrentMask}
+        setTimerId={this.props.setTimerId}
+        timerId={this.props.timerId}
         toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
       />

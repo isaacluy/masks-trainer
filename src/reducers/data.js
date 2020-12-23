@@ -8,6 +8,7 @@ export const languageListReducer = () => {
             selectAll: 'Select All',
             selectNone: 'Select None',
             startTraining: 'Start Training',
+            stopTraining: 'Stop Training',
             welcomeMessage: 'Welcome to the Masks Trainer'
         },
         {
@@ -18,6 +19,7 @@ export const languageListReducer = () => {
             selectAll: 'Seleccionar todas',
             selectNone: 'Descartar todas',
             startTraining: 'Comenzar Entrenamiento',
+            stopTraining: 'Parar Entrenamiento',
             welcomeMessage: 'Bienvenido al Entrenador de Máscaras'
         },
         {
@@ -28,6 +30,7 @@ export const languageListReducer = () => {
             selectAll: 'Seleccionar todas',
             selectNone: 'Descartar todas',
             startTraining: 'Começar Treino',
+            stopTraining: 'Parar Treino',
             welcomeMessage: 'Bem-vindo ao Treinador de Máscaras'
         },
         {
@@ -38,6 +41,7 @@ export const languageListReducer = () => {
             selectAll: 'Choisir tous',
             selectNone: 'Effacer tous',
             startTraining: 'Demarrer la formation',
+            stopTraining: 'Arreter la formation',
             welcomeMessage: 'Bienvenue au formateur de masques'
         }
     ];

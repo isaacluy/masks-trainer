@@ -18,13 +18,7 @@ class TrainingApp extends React.Component {
     }
 
     componentDidMount = () => {
-        setTimeout(this.setNextMask, 0);
-
-        const intervalLength = convertMinToMs(this.props.intervalLength);
-        const timerId = setInterval(this.setNextMask, intervalLength);
-
-        const temporaryCancelTime = (intervalLength*3)+10;
-        setTimeout(() => clearInterval(timerId), temporaryCancelTime);
+        this.startTraining();
     }
 
     setNextMask = () => {
@@ -32,6 +26,21 @@ class TrainingApp extends React.Component {
         const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
 
         this.props.setCurrentMask(this.props.masksNames[randomMaskIndex]);
+    }
+
+    startTraining = () => {
+        setTimeout(this.setNextMask, 0);
+
+        if(!this.props.timerId) {
+            const intervalLength = convertMinToMs(this.props.intervalLength);
+            const timerId = setInterval(this.setNextMask, intervalLength);
+            this.props.setTimerId(timerId);
+        }
+    }
+
+    stopTraining = () => {
+        clearInterval(this.props.timerId);
+        this.props.setTimerId(null);
     }
 
     render = () => {
@@ -44,11 +53,11 @@ class TrainingApp extends React.Component {
                 </Row>
                 <Row className="justify-content-center mb-4">
                     <Button
-                        onClick={this.setNextMask}
+                        onClick={this.stopTraining}
                         size="lg"
                         variant="danger"
                     >
-                        Next Mask
+                        {this.props.selectedLanguage.stopTraining}
                     </Button>
                 </Row>
             </Container>
