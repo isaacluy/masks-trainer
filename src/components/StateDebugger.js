@@ -49,6 +49,9 @@ class StateDebugger extends React.Component {
                         {`Current Mask: ${this.props.currentMask}`}
                     </p>
                     <p>
+                        {`Timer Id: ${this.props.timerId}`}
+                    </p>
+                    <p>
                         {`Mask Names: ${this.props.masksNames}`}
                     </p>
                 </Col>
