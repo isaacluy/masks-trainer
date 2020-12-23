@@ -40,6 +40,13 @@ export const setIntervalLength = minutes => {
     }
 }
 
+export const setTimerId = timerId => {
+    return {
+        type:'SET_TIMER_ID',
+        payload: timerId
+    }
+}
+
 export const toggleTraining = currentState => {
     return {
         type: 'TOGGLE_TRAINING',

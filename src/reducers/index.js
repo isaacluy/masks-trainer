@@ -9,6 +9,14 @@ const currentMaskReducer = (maskName = '', action) => {
     return maskName;
 }
 
+const intervalLengthReducer = (minutes = 3, action) => {
+    if(action && action.typer === 'SET_INTERVAL_LENGTH') {
+        return action.payload;
+    }
+
+    return minutes;
+}
+
 const selectedLanguageReducer = (selectedLang = null, action) => {
     if(action && action.type === 'SELECTED_LANGUAGE') {
         return action.payload;
@@ -40,12 +48,12 @@ const selectedMasksNamesReducer = (masksNames = [], action) => {
     return masksNames;
 }
 
-const intervalLengthReducer = (minutes = 3, action) => {
-    if(action && action.typer === 'SET_INTERVAL_LENGTH') {
+const timerIdReducer = (timerId = null, action) => {
+    if(action && action.type === 'SET_TIMER_ID') {
         return action.payload;
     }
 
-    return minutes;
+    return timerId;
 }
 
 const toggleTrainingReducer = (currentState = false, action) => {
@@ -63,5 +71,6 @@ export default combineReducers({
     masks: selectedMasksReducer,
     masksNames: selectedMasksNamesReducer,
     selectedLanguage: selectedLanguageReducer,
+    timerId: timerIdReducer,
     trainingStarted: toggleTrainingReducer
 });
