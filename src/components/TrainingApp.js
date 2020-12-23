@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import {
+    convertMinToMs,
     maskNameConverter,
     randomIntFromInterval
 } from '../functions';
@@ -16,6 +17,14 @@ class TrainingApp extends React.Component {
         this.props.createMasksNames(masksNames);
     }
 
+    componentDidMount = () => {
+        setTimeout(this.setNextMask, 0);
+
+        const intervalLength = convertMinToMs(this.props.intervalLenght);
+        const timerId = setInterval(this.setNextMask, intervalLength);
+
+        const temporaryCancelTime = (intervalLength*3)+10;
+        setTimeout(() => clearInterval(timerId), temporaryCancelTime);
     }
 
     setNextMask = () => {
@@ -29,9 +38,9 @@ class TrainingApp extends React.Component {
         return (
             <Container fluid className="my-5">
                 <Row className="justify-content-center mb-4">
-                <h1 className="text-center">
+                    <h1 className="text-center">
                         {this.props.currentMask}
-                </h1>
+                    </h1>
                 </Row>
                 <Row className="justify-content-center mb-4">
                     <Button

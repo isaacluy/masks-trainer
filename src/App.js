@@ -48,6 +48,7 @@ class App extends React.Component {
       <TrainingApp
         createMasksNames={this.props.createMasksNames}
         currentMask={this.props.currentMask}
+        intervalLenght={this.props.intervalLenght}
         masks={this.props.masks}
         masksNames={this.props.masksNames}
         selectedLanguage={this.props.selectedLanguage}

@@ -33,6 +33,10 @@ export const buildMasksIdsArray = languageObj => {
     return masksIdsArray;
 }
 
+export const convertMinToMs = minutes => {
+    return ((minutes*60)*1000);
+}
+
 export const getPropertyFromLanguageObject = 
     (currentlySelectedLanguage, property, defaultPropertyValue) => {
         return !currentlySelectedLanguage ? defaultPropertyValue : currentlySelectedLanguage[property];
