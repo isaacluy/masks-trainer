@@ -41,6 +41,7 @@ class TrainingApp extends React.Component {
     stopTraining = () => {
         clearInterval(this.props.timerId);
         this.props.setTimerId(null);
+        this.props.toggleTraining(this.props.trainingStarted);
     }
 
     render = () => {
