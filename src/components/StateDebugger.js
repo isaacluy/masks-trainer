@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 class StateDebugger extends React.Component {
     render = () => {
         return (
-            <div className="row justify-content-center">
+            <div className="row justify-content-center w-100">
                 <Col className="col-3 text-center">
                     <h3>DEBUGGER</h3>
                     <ul>
