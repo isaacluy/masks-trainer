@@ -58,7 +58,7 @@ const toggleTrainingReducer = (currentState = false, action) => {
 
 export default combineReducers({
     currentMask: currentMaskReducer,
-    intervalLenght: intervalLengthReducer,
+    intervalLength: intervalLengthReducer,
     languages: languageListReducer,
     masks: selectedMasksReducer,
     masksNames: selectedMasksNamesReducer,

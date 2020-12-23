@@ -40,7 +40,7 @@ class StateDebugger extends React.Component {
                         {`Languages: ${this.props.languages.map(lang => lang.text)}`}
                     </p>
                     <p>
-                        {`Interval Length: ${this.props.intervalLenght} min`}
+                        {`Interval Length: ${this.props.intervalLength} min`}
                     </p>
                     <p>
                         {`Training Started?: ${this.props.trainingStarted}`}

@@ -48,7 +48,7 @@ class App extends React.Component {
       <TrainingApp
         createMasksNames={this.props.createMasksNames}
         currentMask={this.props.currentMask}
-        intervalLenght={this.props.intervalLenght}
+        intervalLength={this.props.intervalLength}
         masks={this.props.masks}
         masksNames={this.props.masksNames}
         selectedLanguage={this.props.selectedLanguage}
@@ -67,7 +67,7 @@ class App extends React.Component {
           <Row className="m-2">
             <StateDebugger
               currentMask={this.props.currentMask}
-              intervalLenght={this.props.intervalLenght}
+              intervalLength={this.props.intervalLength}
               languages={this.props.languages}
               masks={this.props.masks}
               masksNames={this.props.masksNames}
@@ -84,7 +84,7 @@ class App extends React.Component {
 const mapStateToProps = state => {
     return {
         currentMask: state.currentMask,
-        intervalLenght: state.intervalLenght,
+        intervalLength: state.intervalLength,
         languages: state.languages,
         masks:state.masks,
         masksNames: state.masksNames,

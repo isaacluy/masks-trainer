@@ -20,7 +20,7 @@ class TrainingApp extends React.Component {
     componentDidMount = () => {
         setTimeout(this.setNextMask, 0);
 
-        const intervalLength = convertMinToMs(this.props.intervalLenght);
+        const intervalLength = convertMinToMs(this.props.intervalLength);
         const timerId = setInterval(this.setNextMask, intervalLength);
 
         const temporaryCancelTime = (intervalLength*3)+10;
