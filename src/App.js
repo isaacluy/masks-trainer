@@ -13,6 +13,7 @@ import {
   removeMask,
   selectLanguage,
   setCurrentMask,
+  setIntervalLength,
   toggleTraining
 } from './actions';
 
@@ -65,6 +66,7 @@ class App extends React.Component {
           <Row className="m-2">
             <StateDebugger
               currentMask={this.props.currentMask}
+              intervalLenght={this.props.intervalLenght}
               languages={this.props.languages}
               masks={this.props.masks}
               masksNames={this.props.masksNames}
@@ -81,6 +83,7 @@ class App extends React.Component {
 const mapStateToProps = state => {
     return {
         currentMask: state.currentMask,
+        intervalLenght: state.intervalLenght,
         languages: state.languages,
         masks:state.masks,
         masksNames: state.masksNames,
@@ -97,6 +100,7 @@ export default connect(
     removeMask,
     selectLanguage,
     setCurrentMask,
+    setIntervalLength,
     toggleTraining
   }
 )(App);

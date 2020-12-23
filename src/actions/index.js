@@ -33,6 +33,13 @@ export const setCurrentMask = maskName => {
     }
 }
 
+export const setIntervalLength = minutes => {
+    return {
+        type:'SET_INTERVAL_LENGTH',
+        payload: minutes
+    }
+}
+
 export const toggleTraining = currentState => {
     return {
         type: 'TOGGLE_TRAINING',
