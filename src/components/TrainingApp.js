@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTimerStopwatch from 'react-stopwatch-timer';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -46,13 +47,20 @@ class TrainingApp extends React.Component {
 
     render = () => {
         return (
-            <Container fluid className="my-5">
-                <Row id="mask-display" className="justify-content-center align-items-center bg-success">
+            <Container fluid className="p-0">
+                <Row id="mask-display" className="justify-content-center align-items-center bg-success ml-0">
                     <h1 className="text-center text-white">
                         {this.props.currentMask}
                     </h1>
                 </Row>
-                <Row className="justify-content-center m-2">
+                <Row className="justify-content-center ml-0 my-3">
+                    <ReactTimerStopwatch
+                        fromTime={new Date(0,0)}
+                        isOn={true}
+                        watchType="stopwatch"
+                    />
+                </Row>
+                <Row className="justify-content-center ml-0">
                     <Button
                         onClick={this.stopTraining}
                         size="lg"

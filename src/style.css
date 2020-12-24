@@ -11,10 +11,14 @@ body {
 }
 
 #mask-display {
-    min-height: 85%;
-    min-height: 85vh;
+    min-height: 80%;
+    min-height: 80vh;
 }
 
 #mask-display h1 {
     font-size: 4em;
+}
+
+.react-stopwatch-timer__table {
+    height: auto!important;
 }
