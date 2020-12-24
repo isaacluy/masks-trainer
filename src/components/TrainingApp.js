@@ -47,12 +47,12 @@ class TrainingApp extends React.Component {
     render = () => {
         return (
             <Container fluid className="my-5">
-                <Row className="justify-content-center mb-4">
-                    <h1 className="text-center">
+                <Row id="mask-display" className="justify-content-center align-items-center bg-success">
+                    <h1 className="text-center text-white">
                         {this.props.currentMask}
                     </h1>
                 </Row>
-                <Row className="justify-content-center mb-4">
+                <Row className="justify-content-center m-2">
                     <Button
                         onClick={this.stopTraining}
                         size="lg"

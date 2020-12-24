@@ -9,3 +9,12 @@ body {
 #masks-selector {
     min-width: 310px;
 }
+
+#mask-display {
+    min-height: 85%;
+    min-height: 85vh;
+}
+
+#mask-display h1 {
+    font-size: 4em;
+}
