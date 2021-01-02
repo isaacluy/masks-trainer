@@ -18,9 +18,15 @@ import {
   toggleTraining
 } from './actions';
 
-import { getSelectedLanguage } from './functions';
-
 class App extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      showDebugger: false
+    }
+  }
+
   componentDidMount = () => {
     const selectedLanguageObj = getSelectedLanguage(this.props.languages, window.location.pathname);
 
@@ -31,6 +37,24 @@ class App extends React.Component {
         this.props.selectLanguage(selectedLanguageObj);
       }
     }
+  }
+
+  renderDebugger = () => {
+    return this.state.showDebugger ? (
+      <Container fluid className="my-5">
+        <Row className="m-2">
+          <StateDebugger
+            currentMask={this.props.currentMask}
+            intervalLength={this.props.intervalLength}
+            languages={this.props.languages}              masks={this.props.masks}
+            masksNames={this.props.masksNames}
+            selectedLanguage={this.props.selectedLanguage}
+            timerId={this.props.timerId}
+            trainingStarted={this.props.trainingStarted}
+          />
+        </Row>
+      </Container>
+    ) : null;
   }
 
   renderWelcomeOrTraining = () => {
@@ -66,20 +90,7 @@ class App extends React.Component {
     return this.props.languages ? (
       <div id="main-stage">
         {this.renderWelcomeOrTraining()}
-        <Container fluid className="my-5">
-          <Row className="m-2">
-            <StateDebugger
-              currentMask={this.props.currentMask}
-              intervalLength={this.props.intervalLength}
-              languages={this.props.languages}
-              masks={this.props.masks}
-              masksNames={this.props.masksNames}
-              selectedLanguage={this.props.selectedLanguage}
-              timerId={this.props.timerId}
-              trainingStarted={this.props.trainingStarted}
-            />
-          </Row>
-        </Container>
+        {this.renderDebugger()}
       </div>
     ) : 'Loading...';
   }
