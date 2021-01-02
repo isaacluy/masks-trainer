@@ -5,6 +5,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import {
     getSelectedLanguage,
     getTargetHrefValue,
+    isControlKeyPressed,
     navigateToPathname
 } from '../functions';
 
@@ -19,12 +20,12 @@ class LanguageSelector extends React.Component {
     }
 
     onClick = event => {
-        if(event.metaKey || event.ctrlKey) {
+        if(isControlKeyPressed) {
             return;
-        } else {
-            event.preventDefault();
-            this.setLanguageAndNavigate(event);
         }
+
+        event.preventDefault();
+        this.setLanguageAndNavigate(event);
     }
 
     renderDropdownItem = (language, index) => {

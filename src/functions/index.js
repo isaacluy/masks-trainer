@@ -57,6 +57,10 @@ export const getTargetHrefValue = event => {
     return event ? event.target.attributes.href.value : '/';
 }
 
+export const isControlKeyPressed = event => {
+    return event.metaKey || event.ctrlKey;
+}
+
 export const isHomePath = pathname => {
     return pathname === '/';
 }
