@@ -53,6 +53,14 @@ export const getSelectedLanguage = (languages, href) => {
     return languages.find(language => language.href === href);
 }
 
+export const getTargetHrefValue = event => {
+    return event ? event.target.attributes.href.value : '/';
+}
+
+export const isHomePath = pathname => {
+    return pathname === '/';
+}
+
 export const maskNameConverter = (maskId, selectedLanguage) => {
     const number = maskId.slice(0,1);
     const type = maskId.slice(2);
@@ -65,6 +73,14 @@ export const maskNameConverter = (maskId, selectedLanguage) => {
     }
 
     return maskName;
+}
+
+export const navigateToHomePath = () => {
+    window.location = '/';
+}
+
+export const navigateToPathname = pathname => {
+    window.history.pushState({}, '', pathname);
 }
 
 export const randomIntFromInterval = (min, max) => {

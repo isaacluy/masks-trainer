@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 
 import TrainingApp from './components/TrainingApp';
 import WelcomeApp from './components/WelcomeApp';
-import { getSelectedLanguage } from './functions';
+import { 
+  getSelectedLanguage,
+  isHomePath,
+  navigateToHomePath
+} from './functions';
 
 import {
   addMask,
@@ -18,31 +22,27 @@ import {
 } from './actions';
 
 class App extends React.Component {
-  componentDidMount = () => {
-    const selectedLanguageObject = getSelectedLanguage(this.props.languages, window.location.pathname);
+  validatePathname = (currentPathname, selectedLanguageObject) => {
+    const { setLanguage } = this.props;
 
-    if(window.location.pathname !== '/') {
-      if(!selectedLanguageObject) {
-        window.location = '/';
-      } else {
-        this.props.setLanguage(selectedLanguageObject);
-      }
+    if(selectedLanguageObject) {
+      setLanguage(selectedLanguageObject);
+    } else if (!isHomePath(currentPathname)) {
+      navigateToHomePath();
     }
   }
 
-  renderWelcomeOrTraining = () => {
-    return !this.props.trainingStarted ? (
-      <WelcomeApp
-        addMask={this.props.addMask}
-        languages={this.props.languages}
-        masks={this.props.masks}
-        removeMask={this.props.removeMask}
-        selectedLanguage={this.props.selectedLanguage}
-        setLanguage={this.props.setLanguage}
-        toggleTraining={this.props.toggleTraining}
-        trainingStarted={this.props.trainingStarted}
-      />
-    ) : (
+  componentDidMount = () => {
+    const currentPathname = window.location.pathname;
+    const { languages } = this.props;
+
+    const selectedLanguageObject = getSelectedLanguage(languages, currentPathname);
+
+    this.validatePathname(currentPathname, selectedLanguageObject);
+  }
+
+  renderTrainingApp = () => {
+    return (
       <TrainingApp
         createMasksNames={this.props.createMasksNames}
         currentMask={this.props.currentMask}
@@ -58,7 +58,27 @@ class App extends React.Component {
         toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
       />
-    )
+    );
+  }
+
+  renderWelcomeApp = () => {
+    return (
+      <WelcomeApp
+        addMask={this.props.addMask}
+        languages={this.props.languages}
+        masks={this.props.masks}
+        removeMask={this.props.removeMask}
+        selectedLanguage={this.props.selectedLanguage}
+        setLanguage={this.props.setLanguage}
+        toggleTraining={this.props.toggleTraining}
+        trainingStarted={this.props.trainingStarted}
+      />
+    );
+  }
+
+  renderWelcomeOrTraining = () => {
+    return this.props.trainingStarted ?
+      this.renderTrainingApp() : this.renderWelcomeApp();
   }
 
   render = () => {
