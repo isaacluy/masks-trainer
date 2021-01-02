@@ -1,9 +1,6 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import { connect } from 'react-redux';
 
-import StateDebugger from './components/StateDebugger';
 import TrainingApp from './components/TrainingApp';
 import WelcomeApp from './components/WelcomeApp';
 import { getSelectedLanguage } from './functions';
@@ -31,24 +28,6 @@ class App extends React.Component {
         this.props.selectLanguage(selectedLanguageObj);
       }
     }
-  }
-
-  renderDebugger = () => {
-    return (
-      <Container fluid className="my-5">
-        <Row className="m-2">
-          <StateDebugger
-            currentMask={this.props.currentMask}
-            intervalLength={this.props.intervalLength}
-            languages={this.props.languages}              masks={this.props.masks}
-            masksNames={this.props.masksNames}
-            selectedLanguage={this.props.selectedLanguage}
-            timerId={this.props.timerId}
-            trainingStarted={this.props.trainingStarted}
-          />
-        </Row>
-      </Container>
-    );
   }
 
   renderWelcomeOrTraining = () => {
@@ -86,7 +65,6 @@ class App extends React.Component {
     return this.props.languages ? (
       <div id="main-stage">
         {this.renderWelcomeOrTraining()}
-        {this.renderDebugger()}
       </div>
     ) : 'Loading...';
   }
