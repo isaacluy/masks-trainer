@@ -16,6 +16,7 @@ import {
   setCurrentMask,
   setIntervalLength,
   setTimerId,
+  toggleStopwatch,
   toggleTraining
 } from './actions';
 
@@ -72,7 +73,9 @@ class App extends React.Component {
         selectedLanguage={this.props.selectedLanguage}
         setCurrentMask={this.props.setCurrentMask}
         setTimerId={this.props.setTimerId}
+        stopwatchStarted={this.props.stopwatchStarted}
         timerId={this.props.timerId}
+        toggleStopwatch={this.props.toggleStopwatch}
         toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
       />
@@ -97,6 +100,7 @@ const mapStateToProps = state => {
         masks:state.masks,
         masksNames: state.masksNames,
         selectedLanguage: state.selectedLanguage,
+        stopwatchStarted: state.stopwatchStarted,
         timerId: state.timerId,
         trainingStarted: state.trainingStarted
     }
@@ -112,6 +116,7 @@ export default connect(
     setCurrentMask,
     setIntervalLength,
     setTimerId,
+    toggleStopwatch,
     toggleTraining
   }
 )(App);

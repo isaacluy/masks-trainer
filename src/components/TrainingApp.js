@@ -18,6 +18,16 @@ class TrainingApp extends React.Component {
         this.props.createMasksNames(masksNames);
     }
 
+    renderStopWatch = () => {
+        return (
+            <ReactTimerStopwatch
+                fromTime={new Date(0,0)}
+                isOn={this.props.stopwatchStarted}
+                watchType="stopwatch"
+            />
+        );
+    }
+
     componentDidMount = () => {
         this.startTraining();
     }
@@ -31,6 +41,7 @@ class TrainingApp extends React.Component {
 
     startTraining = () => {
         setTimeout(this.setNextMask, 0);
+        this.props.toggleStopwatch(this.props.stopwatchStarted);
 
         if(!this.props.timerId) {
             const intervalLength = convertMinToMs(this.props.intervalLength);
@@ -40,9 +51,13 @@ class TrainingApp extends React.Component {
     }
 
     stopTraining = () => {
+        this.props.toggleStopwatch(this.props.stopwatchStarted);
+
         clearInterval(this.props.timerId);
         this.props.setTimerId(null);
-        this.props.toggleTraining(this.props.trainingStarted);
+        setTimeout(
+            () => this.props.toggleTraining(this.props.trainingStarted), 100
+        );
     }
 
     render = () => {
@@ -54,11 +69,7 @@ class TrainingApp extends React.Component {
                     </h1>
                 </Row>
                 <Row className="justify-content-center ml-0 my-3">
-                    <ReactTimerStopwatch
-                        fromTime={new Date(0,0)}
-                        isOn={true}
-                        watchType="stopwatch"
-                    />
+                    {this.renderStopWatch()}
                 </Row>
                 <Row className="justify-content-center ml-0">
                     <Button

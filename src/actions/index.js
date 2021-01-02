@@ -47,6 +47,13 @@ export const setTimerId = timerId => {
     }
 }
 
+export const toggleStopwatch = currentState => {
+    return {
+        type: 'TOGGLE_STOPWATCH',
+        payload: currentState
+    }
+}
+
 export const toggleTraining = currentState => {
     return {
         type: 'TOGGLE_TRAINING',

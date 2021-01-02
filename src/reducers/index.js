@@ -56,6 +56,14 @@ const timerIdReducer = (timerId = null, action) => {
     return timerId;
 }
 
+const toggleStopwatchReducer = (currentState = false, action) => {
+    if(action && action.type === 'TOGGLE_STOPWATCH') {
+        return !currentState;
+    }
+
+    return currentState;
+}
+
 const toggleTrainingReducer = (currentState = false, action) => {
     if(action && action.type === 'TOGGLE_TRAINING') {
         return !currentState;
@@ -71,6 +79,7 @@ export default combineReducers({
     masks: selectedMasksReducer,
     masksNames: selectedMasksNamesReducer,
     selectedLanguage: selectedLanguageReducer,
+    stopwatchStarted: toggleStopwatchReducer,
     timerId: timerIdReducer,
     trainingStarted: toggleTrainingReducer
 });
