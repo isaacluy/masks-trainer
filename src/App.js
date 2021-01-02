@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import StateDebugger from './components/StateDebugger';
 import TrainingApp from './components/TrainingApp';
 import WelcomeApp from './components/WelcomeApp';
+import { getSelectedLanguage } from './functions';
 
 import {
   addMask,
@@ -19,14 +20,6 @@ import {
 } from './actions';
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      showDebugger: false
-    }
-  }
-
   componentDidMount = () => {
     const selectedLanguageObj = getSelectedLanguage(this.props.languages, window.location.pathname);
 
@@ -40,7 +33,7 @@ class App extends React.Component {
   }
 
   renderDebugger = () => {
-    return this.state.showDebugger ? (
+    return (
       <Container fluid className="my-5">
         <Row className="m-2">
           <StateDebugger
@@ -54,7 +47,7 @@ class App extends React.Component {
           />
         </Row>
       </Container>
-    ) : null;
+    );
   }
 
   renderWelcomeOrTraining = () => {
