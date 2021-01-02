@@ -1,8 +1,20 @@
 import { combineReducers } from 'redux';
-import { languageListReducer } from './data';
+
+import {
+    ADD_MASK,
+    CREATE_MASKS_NAMES,
+    REMOVE_MASK,
+    SELECTED_LANGUAGE,
+    SET_CURRENT_MASK,
+    SET_INTERVAL_LENGTH,
+    SET_TIMER_ID,
+    TOGGLE_STOPWATCH,
+    TOGGLE_TRAINING
+} from '../actions/types';
+import { languagesReducer } from './data';
 
 const currentMaskReducer = (maskName = '', action) => {
-    if(action && action.type === 'SET_CURRENT_MASK') {
+    if(action && action.type === SET_CURRENT_MASK) {
         return action.payload;
     }
 
@@ -10,7 +22,7 @@ const currentMaskReducer = (maskName = '', action) => {
 }
 
 const intervalLengthReducer = (minutes = 3, action) => {
-    if(action && action.typer === 'SET_INTERVAL_LENGTH') {
+    if(action && action.typer === SET_INTERVAL_LENGTH) {
         return action.payload;
     }
 
@@ -18,7 +30,7 @@ const intervalLengthReducer = (minutes = 3, action) => {
 }
 
 const selectedLanguageReducer = (selectedLang = null, action) => {
-    if(action && action.type === 'SELECTED_LANGUAGE') {
+    if(action && action.type === SELECTED_LANGUAGE) {
         return action.payload;
     }
 
@@ -26,9 +38,9 @@ const selectedLanguageReducer = (selectedLang = null, action) => {
 }
 
 const selectedMasksReducer = (masks = [], action) => {
-    if(action && action.type === 'ADD_MASK') {
+    if(action && action.type === ADD_MASK) {
         return [...masks, action.payload];
-    } else if (action && action.type === 'REMOVE_MASK') {
+    } else if (action && action.type === REMOVE_MASK) {
         const index = masks.indexOf(action.payload);
         if (index > -1) {
             const newMasks = [...masks];
@@ -41,7 +53,7 @@ const selectedMasksReducer = (masks = [], action) => {
 }
 
 const selectedMasksNamesReducer = (masksNames = [], action) => {
-    if(action && action.type === 'CREATE_MASKS_NAMES') {
+    if(action && action.type === CREATE_MASKS_NAMES) {
         return action.payload;
     }
 
@@ -49,7 +61,7 @@ const selectedMasksNamesReducer = (masksNames = [], action) => {
 }
 
 const timerIdReducer = (timerId = null, action) => {
-    if(action && action.type === 'SET_TIMER_ID') {
+    if(action && action.type === SET_TIMER_ID) {
         return action.payload;
     }
 
@@ -57,7 +69,7 @@ const timerIdReducer = (timerId = null, action) => {
 }
 
 const toggleStopwatchReducer = (currentState = false, action) => {
-    if(action && action.type === 'TOGGLE_STOPWATCH') {
+    if(action && action.type === TOGGLE_STOPWATCH) {
         return !currentState;
     }
 
@@ -65,7 +77,7 @@ const toggleStopwatchReducer = (currentState = false, action) => {
 }
 
 const toggleTrainingReducer = (currentState = false, action) => {
-    if(action && action.type === 'TOGGLE_TRAINING') {
+    if(action && action.type === TOGGLE_TRAINING) {
         return !currentState;
     }
 
@@ -75,7 +87,7 @@ const toggleTrainingReducer = (currentState = false, action) => {
 export default combineReducers({
     currentMask: currentMaskReducer,
     intervalLength: intervalLengthReducer,
-    languages: languageListReducer,
+    languages: languagesReducer,
     masks: selectedMasksReducer,
     masksNames: selectedMasksNamesReducer,
     selectedLanguage: selectedLanguageReducer,

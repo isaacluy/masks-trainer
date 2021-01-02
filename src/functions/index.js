@@ -1,18 +1,18 @@
-export const arrayDiff = (a1, a2) => {
+export const arrayDifference = (a1, a2) => {
     return a1.filter(element => a2.indexOf(element) === -1);
 }
 
-export const buildMasksArray = languageObj => {
+export const buildMasksArray = languageObject => {
     const masksArray = [];
 
-    if(languageObj) {
+    if(languageObject) {
         for (let i = 1; i <= 6; i++) {
             const helperArray = [];
             
-            if(languageObj.href === '/en') {
-                helperArray.push(`${i} ${languageObj.experience}`, `${i} ${languageObj.innocence}`);
+            if(languageObject.href === '/en') {
+                helperArray.push(`${i} ${languageObject.experience}`, `${i} ${languageObject.innocence}`);
             } else {
-                helperArray.push(`${languageObj.experience} ${i}`, `${languageObj.innocence} ${i}`);
+                helperArray.push(`${languageObject.experience} ${i}`, `${languageObject.innocence} ${i}`);
             }
             masksArray.push(helperArray);
         }
@@ -21,10 +21,10 @@ export const buildMasksArray = languageObj => {
     return masksArray;
 }
 
-export const buildMasksIdsArray = languageObj => {
+export const buildMasksIdsArray = languageObject => {
     let masksIdsArray = [];
 
-    if(languageObj) {
+    if(languageObject) {
         for (let i = 1; i <= 6; i++) {
             masksIdsArray = [...masksIdsArray, `${i}-experience`, `${i}-innocence`];
         }

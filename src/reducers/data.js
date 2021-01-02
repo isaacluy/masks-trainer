@@ -1,4 +1,4 @@
-export const languageListReducer = () => {
+export const languagesReducer = () => {
     return [
         {
             text: 'English',

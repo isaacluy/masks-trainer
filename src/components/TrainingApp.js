@@ -18,20 +18,6 @@ class TrainingApp extends React.Component {
         this.props.createMasksNames(masksNames);
     }
 
-    renderStopWatch = () => {
-        return (
-            <ReactTimerStopwatch
-                fromTime={new Date(0,0)}
-                isOn={this.props.stopwatchStarted}
-                watchType="stopwatch"
-            />
-        );
-    }
-
-    componentDidMount = () => {
-        this.startTraining();
-    }
-
     setNextMask = () => {
         const numberOfMasks = this.props.masks.length;
         const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
@@ -50,6 +36,10 @@ class TrainingApp extends React.Component {
         }
     }
 
+    componentDidMount = () => {
+        this.startTraining();
+    }
+
     stopTraining = () => {
         this.props.toggleStopwatch(this.props.stopwatchStarted);
 
@@ -60,25 +50,50 @@ class TrainingApp extends React.Component {
         );
     }
 
+    renderStopTrainingButton = () => {
+        return (
+            <Button
+                onClick={this.stopTraining}
+                size="lg"
+                variant="danger"
+            >
+                {this.props.selectedLanguage.stopTraining}
+            </Button>
+        )
+    }
+
+    renderStopWatch = () => {
+        return (
+            <ReactTimerStopwatch
+                fromTime={new Date(0,0)}
+                isOn={this.props.stopwatchStarted}
+                watchType="stopwatch"
+            />
+        );
+    }
+
+    renderCurrentMask = () => {
+        return (
+            <h1 className="text-center text-white">
+                {this.props.currentMask}
+            </h1>
+        );
+    }
+
     render = () => {
         return (
             <Container fluid className="p-0">
-                <Row id="mask-display" className="justify-content-center align-items-center bg-success ml-0">
-                    <h1 className="text-center text-white">
-                        {this.props.currentMask}
-                    </h1>
+                <Row
+                    className="justify-content-center align-items-center bg-success ml-0"
+                    id="mask-display"
+                >
+                    {this.renderCurrentMask()}
                 </Row>
                 <Row className="justify-content-center ml-0 my-3">
                     {this.renderStopWatch()}
                 </Row>
                 <Row className="justify-content-center ml-0">
-                    <Button
-                        onClick={this.stopTraining}
-                        size="lg"
-                        variant="danger"
-                    >
-                        {this.props.selectedLanguage.stopTraining}
-                    </Button>
+                    {this.renderStopTrainingButton()}
                 </Row>
             </Container>
         );

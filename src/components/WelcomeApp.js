@@ -28,7 +28,7 @@ class WelcomeApp extends React.Component {
         <Row className="justify-content-center mb-2">
           <LanguageSelector
             languages={this.props.languages}
-            selectLanguage={this.props.selectLanguage}
+            setLanguage={this.props.setLanguage}
             selectedLanguage={this.props.selectedLanguage}
           />
         </Row>

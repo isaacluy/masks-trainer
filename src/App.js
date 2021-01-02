@@ -9,9 +9,9 @@ import {
   addMask,
   createMasksNames,
   removeMask,
-  selectLanguage,
   setCurrentMask,
   setIntervalLength,
+  setLanguage,
   setTimerId,
   toggleStopwatch,
   toggleTraining
@@ -19,13 +19,13 @@ import {
 
 class App extends React.Component {
   componentDidMount = () => {
-    const selectedLanguageObj = getSelectedLanguage(this.props.languages, window.location.pathname);
+    const selectedLanguageObject = getSelectedLanguage(this.props.languages, window.location.pathname);
 
     if(window.location.pathname !== '/') {
-      if(!selectedLanguageObj) {
+      if(!selectedLanguageObject) {
         window.location = '/';
       } else {
-        this.props.selectLanguage(selectedLanguageObj);
+        this.props.setLanguage(selectedLanguageObject);
       }
     }
   }
@@ -37,8 +37,8 @@ class App extends React.Component {
         languages={this.props.languages}
         masks={this.props.masks}
         removeMask={this.props.removeMask}
-        selectLanguage={this.props.selectLanguage}
         selectedLanguage={this.props.selectedLanguage}
+        setLanguage={this.props.setLanguage}
         toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
       />
@@ -62,11 +62,11 @@ class App extends React.Component {
   }
 
   render = () => {
-    return this.props.languages ? (
+    return (
       <div id="main-stage">
         {this.renderWelcomeOrTraining()}
       </div>
-    ) : 'Loading...';
+    );
   }
 }
 
@@ -90,9 +90,9 @@ export default connect(
     addMask,
     createMasksNames,
     removeMask,
-    selectLanguage,
     setCurrentMask,
     setIntervalLength,
+    setLanguage,
     setTimerId,
     toggleStopwatch,
     toggleTraining

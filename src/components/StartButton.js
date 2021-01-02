@@ -11,7 +11,7 @@ class StartButton extends React.Component {
     }
 
     render = () => {
-        let disableButton = this.getButtonState();
+        const disableButton = this.getButtonState();
 
         return this.props.selectedLanguage ? (
             <Button

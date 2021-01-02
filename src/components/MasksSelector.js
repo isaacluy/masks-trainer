@@ -4,22 +4,22 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
 import {
-    arrayDiff,
+    arrayDifference,
     buildMasksArray,
     buildMasksIdsArray
 } from '../functions';
 
 class MasksSelector extends React.Component {
-    onSelectNoneButtonClick = event => {
+    onSelectNoneButtonClick = () => {
         if(this.props.masks.length >= 1) {
             this.props.masks.forEach(id => this.props.removeMask(id));
         }
     }
 
-    onSelectAllButtonClick = event => {
+    onSelectAllButtonClick = () => {
         if(this.props.masks.length < 12) {
             const masksIds = buildMasksIdsArray(this.props.selectedLanguage);
-            const missingMasks = arrayDiff(masksIds, this.props.masks);
+            const missingMasks = arrayDifference(masksIds, this.props.masks);
             missingMasks.forEach(id => this.props.addMask(id));
         }
     }
@@ -32,7 +32,7 @@ class MasksSelector extends React.Component {
         }
     }
 
-    renderSelectAllButton = selectedLanguageObj => {
+    renderSelectButtons = selectedLanguageObject => {
         return (
             <Form.Row>
                 <div className="d-flex container">
@@ -43,7 +43,7 @@ class MasksSelector extends React.Component {
                             size="sm"
                             variant="success"
                         >
-                            {selectedLanguageObj.selectAll}
+                            {selectedLanguageObject.selectAll}
                         </Button>
                     </Col>
                     <Col>
@@ -53,7 +53,7 @@ class MasksSelector extends React.Component {
                             size="sm"
                             variant="danger"
                         >
-                            {selectedLanguageObj.selectNone}
+                            {selectedLanguageObject.selectNone}
                         </Button>
                     </Col>
                 </div>
@@ -99,7 +99,7 @@ class MasksSelector extends React.Component {
                     {this.renderMasks(masksArray)}
                 </div>
                 <div>
-                    {this.renderSelectAllButton(this.props.selectedLanguage)}
+                    {this.renderSelectButtons(this.props.selectedLanguage)}
                 </div>
             </Form>
         ) : null;
