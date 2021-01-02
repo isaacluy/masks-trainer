@@ -2,7 +2,7 @@ export const arrayDifference = (a1, a2) => {
     return a1.filter(element => a2.indexOf(element) === -1);
 }
 
-export const buildMasksArray = languageObject => {
+export const buildMasksIdsArrayByPairs = languageObject => {
     const masksArray = [];
 
     if(languageObject) {

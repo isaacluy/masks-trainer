@@ -14,12 +14,12 @@ class TrainingApp extends React.Component {
     constructor(props) {
         super(props);
 
-        const masksNames = this.props.masks.map(mask => maskNameConverter(mask, this.props.selectedLanguage))
+        const masksNames = this.props.selectedMasks.map(mask => maskNameConverter(mask, this.props.selectedLanguage))
         this.props.createMasksNames(masksNames);
     }
 
     setNextMask = () => {
-        const numberOfMasks = this.props.masks.length;
+        const numberOfMasks = this.props.selectedMasks.length;
         const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
 
         this.props.setCurrentMask(this.props.masksNames[randomMaskIndex]);

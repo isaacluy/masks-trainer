@@ -36,14 +36,14 @@ class WelcomeApp extends React.Component {
           <MasksSelector
             addMask={this.props.addMask}
             languages={this.props.languages}
-            masks={this.props.masks}
+            selectedMasks={this.props.selectedMasks}
             removeMask={this.props.removeMask}
             selectedLanguage={this.props.selectedLanguage}
           />
         </Row>
         <Row className="justify-content-center mb-4">
           <StartButton
-            masks={this.props.masks}
+            selectedMasks={this.props.selectedMasks}
             selectedLanguage={this.props.selectedLanguage}
             toggleTraining={this.props.toggleTraining}
             trainingStarted={this.props.trainingStarted}

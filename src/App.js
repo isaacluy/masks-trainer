@@ -47,9 +47,9 @@ class App extends React.Component {
         createMasksNames={this.props.createMasksNames}
         currentMask={this.props.currentMask}
         intervalLength={this.props.intervalLength}
-        masks={this.props.masks}
         masksNames={this.props.masksNames}
         selectedLanguage={this.props.selectedLanguage}
+        selectedMasks={this.props.selectedMasks}
         setCurrentMask={this.props.setCurrentMask}
         setTimerId={this.props.setTimerId}
         stopwatchStarted={this.props.stopwatchStarted}
@@ -66,9 +66,9 @@ class App extends React.Component {
       <WelcomeApp
         addMask={this.props.addMask}
         languages={this.props.languages}
-        masks={this.props.masks}
         removeMask={this.props.removeMask}
         selectedLanguage={this.props.selectedLanguage}
+        selectedMasks={this.props.selectedMasks}
         setLanguage={this.props.setLanguage}
         toggleTraining={this.props.toggleTraining}
         trainingStarted={this.props.trainingStarted}
@@ -95,7 +95,7 @@ const mapStateToProps = state => {
         currentMask: state.currentMask,
         intervalLength: state.intervalLength,
         languages: state.languages,
-        masks:state.masks,
+        selectedMasks:state.selectedMasks,
         masksNames: state.masksNames,
         selectedLanguage: state.selectedLanguage,
         stopwatchStarted: state.stopwatchStarted,

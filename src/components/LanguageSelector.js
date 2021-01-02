@@ -20,7 +20,7 @@ class LanguageSelector extends React.Component {
     }
 
     onClick = event => {
-        if(isControlKeyPressed) {
+        if(isControlKeyPressed(event)) {
             return;
         }
 

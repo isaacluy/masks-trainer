@@ -37,19 +37,19 @@ const selectedLanguageReducer = (selectedLang = null, action) => {
     return selectedLang;
 }
 
-const selectedMasksReducer = (masks = [], action) => {
+const selectedMasksReducer = (selectedMasks = [], action) => {
     if(action && action.type === ADD_MASK) {
-        return [...masks, action.payload];
+        return [...selectedMasks, action.payload];
     } else if (action && action.type === REMOVE_MASK) {
-        const index = masks.indexOf(action.payload);
+        const index = selectedMasks.indexOf(action.payload);
         if (index > -1) {
-            const newMasks = [...masks];
+            const newMasks = [...selectedMasks];
             newMasks.splice(index, 1);
             return newMasks;
         }
     }
 
-    return masks;
+    return selectedMasks;
 }
 
 const selectedMasksNamesReducer = (masksNames = [], action) => {
@@ -88,9 +88,9 @@ export default combineReducers({
     currentMask: currentMaskReducer,
     intervalLength: intervalLengthReducer,
     languages: languagesReducer,
-    masks: selectedMasksReducer,
     masksNames: selectedMasksNamesReducer,
     selectedLanguage: selectedLanguageReducer,
+    selectedMasks: selectedMasksReducer,
     stopwatchStarted: toggleStopwatchReducer,
     timerId: timerIdReducer,
     trainingStarted: toggleTrainingReducer

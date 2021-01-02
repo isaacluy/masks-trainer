@@ -7,7 +7,7 @@ class StartButton extends React.Component {
     }
 
     getButtonState = () => {
-        return this.props.masks.length >= 1 ? false : true;
+        return this.props.selectedMasks.length >= 1 ? false : true;
     }
 
     render = () => {
