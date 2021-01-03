@@ -2,7 +2,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-import { buildMasksIdsArrayByPairs } from '../functions';
+import { buildMasksIdsArrayByPairs } from '../utils/masks-utils';
 
 class MasksCheckboxes extends React.Component {
     onCheckboxChange = event => {

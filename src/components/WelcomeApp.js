@@ -5,8 +5,7 @@ import Row from 'react-bootstrap/Row';
 import LanguageSelector from './LanguageSelector';
 import MasksSelector from './MasksSelector';
 import StartButton from './StartButton';
-
-import { getPropertyFromLanguageObject } from '../functions';
+import { getPropertyFromLanguageObject } from '../utils/language-utils';
 
 class WelcomeApp extends React.Component {
   renderStartButton = () => {

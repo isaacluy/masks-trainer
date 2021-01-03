@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 
 import TrainingApp from './components/TrainingApp';
 import WelcomeApp from './components/WelcomeApp';
-import { 
-  getSelectedLanguage,
-  isHomePath,
-  navigateToHomePath
-} from './functions';
-
+import { getSelectedLanguage } from './utils/language-utils';
+import { isHomePath, navigateToHomePath } from './utils/navigation-utils';
 import {
   addMask,
   addSelectedMasksNames,

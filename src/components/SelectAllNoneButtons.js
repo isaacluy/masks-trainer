@@ -3,10 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-import {
-    arrayDifference,
-    buildMasksIdsArray
-} from '../functions';
+import { arrayDifference } from '../utils';
+import { buildMasksIdsArray } from '../utils/masks-utils';
 
 class SelectAllNoneButtons extends React.Component {
     onSelectNoneButtonClick = () => {

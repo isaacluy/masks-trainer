@@ -2,15 +2,15 @@ import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
+import { isControlKeyPressed } from '../utils';
+import { getSelectedLanguage } from '../utils/language-utils';
 import {
-    getSelectedLanguage,
     getTargetHrefValue,
-    isControlKeyPressed,
     navigateToPathname
-} from '../functions';
+} from '../utils/navigation-utils';
 
 class LanguageSelector extends React.Component {
-    setLanguageAndNavigate = event => {
+    setNewLanguageAndNavigate = event => {
         const pathname = getTargetHrefValue(event);
         const { languages, setLanguage } = this.props;
         const newSelectedLanguage = getSelectedLanguage(languages, pathname);
@@ -25,7 +25,7 @@ class LanguageSelector extends React.Component {
         }
 
         event.preventDefault();
-        this.setLanguageAndNavigate(event);
+        this.setNewLanguageAndNavigate(event);
     }
 
     renderDropdownItem = (language, index) => {

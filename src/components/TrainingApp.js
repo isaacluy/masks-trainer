@@ -4,12 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import StopTrainingButton from './StopTrainingButton';
-
-import {
-    convertMinToMs,
-    maskNameConverter,
-    randomIntFromInterval
-} from '../functions';
+import { convertMinToMs } from '../utils';
+import { getRandomMask, maskNameConverter } from '../utils/masks-utils';
 
 class TrainingApp extends React.Component {
     getMasksNamesFromIds = () => {
@@ -48,11 +44,10 @@ class TrainingApp extends React.Component {
     }
 
     setNextMask = () => {
-        const { selectedMasksNames, selectedMasks, setCurrentMask } = this.props;
-        const numberOfMasks = selectedMasks.length;
-        const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
+        const { selectedMasksNames, setCurrentMask } = this.props;
+        const nextRandomMask = getRandomMask(selectedMasksNames);
 
-        setCurrentMask(selectedMasksNames[randomMaskIndex]);
+        setCurrentMask(nextRandomMask);
     }
 
     setFirstMask = () => {

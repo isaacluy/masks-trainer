@@ -10,10 +10,10 @@ import {
     TOGGLE_TRAINING
 } from './types';
 
-export const addMask = mask => {
+export const addMask = maskId => {
     return {
         type: ADD_MASK,
-        payload: mask
+        payload: maskId
     }
 }
 

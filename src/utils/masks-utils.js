@@ -1,6 +1,4 @@
-export const arrayDifference = (a1, a2) => {
-    return a1.filter(element => a2.indexOf(element) === -1);
-}
+import { randomIntFromInterval } from './index';
 
 export const buildMasksIdsArrayByPairs = languageObject => {
     const masksArray = [];
@@ -33,42 +31,11 @@ export const buildMasksIdsArray = languageObject => {
     return masksIdsArray;
 }
 
-export const convertMinToMs = minutes => {
-    return ((minutes*60)*1000);
-}
-
-export const getPropertyFromLanguageObject = params => {
-    const {
-        selectedLanguage,
-        propertyName,
-        defaultPropertyValue
-    } = params;
-
-    return !selectedLanguage ?
-            defaultPropertyValue : selectedLanguage[propertyName];
-}
-
 export const getRandomMask = selectedMasksNames => {
     const numberOfMasks = selectedMasksNames.length;
     const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
 
     return selectedMasksNames[randomMaskIndex];
-}
-
-export const getSelectedLanguage = (languages, href) => {
-    return languages.find(language => language.href === href);
-}
-
-export const getTargetHrefValue = event => {
-    return event ? event.target.attributes.href.value : '/';
-}
-
-export const isControlKeyPressed = event => {
-    return event.metaKey || event.ctrlKey;
-}
-
-export const isHomePath = pathname => {
-    return pathname === '/';
 }
 
 export const maskNameConverter = (maskId, selectedLanguage) => {
@@ -83,16 +50,4 @@ export const maskNameConverter = (maskId, selectedLanguage) => {
     }
 
     return maskName;
-}
-
-export const navigateToHomePath = () => {
-    window.location = '/';
-}
-
-export const navigateToPathname = pathname => {
-    window.history.pushState({}, '', pathname);
-}
-
-export const randomIntFromInterval = (min, max) => {
-    return Math.floor(Math.random()*(max-min+1)+min);
 }
