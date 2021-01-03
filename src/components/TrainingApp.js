@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactTimerStopwatch from 'react-stopwatch-timer';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+
+import StopTrainingButton from './StopTrainingButton';
 
 import {
     convertMinToMs,
@@ -11,71 +12,96 @@ import {
 } from '../functions';
 
 class TrainingApp extends React.Component {
+    getMasksNamesFromIds = () => {
+        const { selectedLanguage, selectedMasks } = this.props;
+
+        return selectedMasks.map(mask => maskNameConverter(mask, selectedLanguage));
+    }
+
+    setMasksNamesFromIds = () => {
+        const selectedMasksNames = this.getMasksNamesFromIds();
+        const { addSelectedMasksNames } = this.props;
+
+        addSelectedMasksNames(selectedMasksNames);
+    }
+
     constructor(props) {
         super(props);
 
-        const masksNames = this.props.selectedMasks.map(mask => maskNameConverter(mask, this.props.selectedLanguage))
-        this.props.createMasksNames(masksNames);
+        this.setMasksNamesFromIds();
+    }
+
+    startMasksTimer = () => {
+        const { intervalLength, setTimerId, timerId } = this.props;
+
+        if(!timerId) {
+            const intervalLengthInMs = convertMinToMs(intervalLength);
+            const newTimerId = setInterval(this.setNextMask, intervalLengthInMs);
+            setTimerId(newTimerId);
+        }
+    }
+
+    startOnScreenStopwatch = () => {
+        const { stopwatchStarted, toggleStopwatch } = this.props;
+
+        toggleStopwatch(stopwatchStarted);
     }
 
     setNextMask = () => {
-        const numberOfMasks = this.props.selectedMasks.length;
+        const { selectedMasksNames, selectedMasks, setCurrentMask } = this.props;
+        const numberOfMasks = selectedMasks.length;
         const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
 
-        this.props.setCurrentMask(this.props.masksNames[randomMaskIndex]);
+        setCurrentMask(selectedMasksNames[randomMaskIndex]);
+    }
+
+    setFirstMask = () => {
+        setTimeout(this.setNextMask, 0);
     }
 
     startTraining = () => {
-        setTimeout(this.setNextMask, 0);
-        this.props.toggleStopwatch(this.props.stopwatchStarted);
-
-        if(!this.props.timerId) {
-            const intervalLength = convertMinToMs(this.props.intervalLength);
-            const timerId = setInterval(this.setNextMask, intervalLength);
-            this.props.setTimerId(timerId);
-        }
+        this.setFirstMask();
+        this.startOnScreenStopwatch();
+        this.startMasksTimer();
     }
 
     componentDidMount = () => {
         this.startTraining();
     }
 
-    stopTraining = () => {
-        this.props.toggleStopwatch(this.props.stopwatchStarted);
-
-        clearInterval(this.props.timerId);
-        this.props.setTimerId(null);
-        setTimeout(
-            () => this.props.toggleTraining(this.props.trainingStarted), 100
-        );
-    }
-
     renderStopTrainingButton = () => {
         return (
-            <Button
-                onClick={this.stopTraining}
-                size="lg"
-                variant="danger"
-            >
-                {this.props.selectedLanguage.stopTraining}
-            </Button>
+            <StopTrainingButton
+                selectedLanguage={this.props.selectedLanguage}
+                setTimerId={this.props.setTimerId}
+                stopwatchStarted={this.props.stopwatchStarted}
+                timerId={this.props.timerId}
+                toggleStopwatch={this.props.toggleStopwatch}
+                toggleTraining={this.props.toggleTraining}
+                trainingStarted={this.props.trainingStarted}
+            />
         )
     }
 
-    renderStopWatch = () => {
+    renderOnScreenStopWatch = () => {
+        const { stopwatchStarted } = this.props;
+        const fromTime = new Date(0,0);
+
         return (
             <ReactTimerStopwatch
-                fromTime={new Date(0,0)}
-                isOn={this.props.stopwatchStarted}
+                fromTime={fromTime}
+                isOn={stopwatchStarted}
                 watchType="stopwatch"
             />
         );
     }
 
     renderCurrentMask = () => {
+        const { currentMask } = this.props;
+
         return (
             <h1 className="text-center text-white">
-                {this.props.currentMask}
+                {currentMask}
             </h1>
         );
     }
@@ -90,7 +116,7 @@ class TrainingApp extends React.Component {
                     {this.renderCurrentMask()}
                 </Row>
                 <Row className="justify-content-center ml-0 my-3">
-                    {this.renderStopWatch()}
+                    {this.renderOnScreenStopWatch()}
                 </Row>
                 <Row className="justify-content-center ml-0">
                     {this.renderStopTrainingButton()}

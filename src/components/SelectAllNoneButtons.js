@@ -29,8 +29,8 @@ class SelectAllNoneButtons extends React.Component {
         }
     }
 
-    renderButton = properties => {
-        const {label, onClick, variant } = properties;
+    renderSmallButton = properties => {
+        const { label, onClick, variant } = properties;
 
         return (
             <Button
@@ -59,10 +59,10 @@ class SelectAllNoneButtons extends React.Component {
             <Form.Row>
                 <div className="d-flex container">
                     <Col>
-                        {this.renderButton(selectAllButtonProps)}
+                        {this.renderSmallButton(selectAllButtonProps)}
                     </Col>
                     <Col>
-                        {this.renderButton(selectNoneButtonProps)}
+                        {this.renderSmallButton(selectNoneButtonProps)}
                     </Col>
                 </div>
             </Form.Row>

@@ -9,45 +9,99 @@ import StartButton from './StartButton';
 import { getPropertyFromLanguageObject } from '../functions';
 
 class WelcomeApp extends React.Component {
+  renderStartButton = () => {
+    const {
+      selectedMasks,
+      selectedLanguage,
+      toggleTraining,
+      trainingStarted
+    } = this.props;
+
+    return (
+      <StartButton
+        selectedMasks={selectedMasks}
+        selectedLanguage={selectedLanguage}
+        toggleTraining={toggleTraining}
+        trainingStarted={trainingStarted}
+      />
+    );
+  }
+
+  renderMasksSelector = () => {
+    const {
+      addMask,
+      languages,
+      selectedMasks,
+      removeMask,
+      selectedLanguage
+    } = this.props;
+
+    return (
+      <MasksSelector
+        addMask={addMask}
+        languages={languages}
+        selectedMasks={selectedMasks}
+        removeMask={removeMask}
+        selectedLanguage={selectedLanguage}
+      />
+    );
+  }
+
+  renderLanguageSelector = () => {
+    const { languages, setLanguage, selectedLanguage } = this.props;
+
+    return (
+      <LanguageSelector
+        languages={languages}
+        setLanguage={setLanguage}
+        selectedLanguage={selectedLanguage}
+      />
+    )
+  }
+
+  getDefaultWelcomeMessage = () => {
+    const { languages } = this.props;
+
+    return languages[0].welcomeMessage;
+  }
+
   getWelcomeMessage = () => {
-    const defaultWelcomeMsg = this.props.languages[0].welcomeMessage;
-    return getPropertyFromLanguageObject(this.props.selectedLanguage, 'welcomeMessage', defaultWelcomeMsg);
+    const defaultWelcomeMessage = this.getDefaultWelcomeMessage();
+    const { selectedLanguage } = this.props;
+    const params = {
+      selectedLanguage,
+      propertyName: 'welcomeMessage',
+      defaultPropertyValue: defaultWelcomeMessage
+    }
+
+    return getPropertyFromLanguageObject(params);
+  }
+
+  renderWelcomeMessage = () => {
+    return (
+      <h1
+        id="welcome-message"
+        className="text-center"
+      >
+        {this.getWelcomeMessage()}
+      </h1>
+    )
   }
 
   render = () => {
     return (
       <Container fluid className="my-5">
         <Row className="justify-content-center mb-4">
-          <h1
-            id="welcome-message"
-            className="text-center"
-          >
-            {this.getWelcomeMessage()}
-          </h1>
+          {this.renderWelcomeMessage()}
         </Row>
         <Row className="justify-content-center mb-2">
-          <LanguageSelector
-            languages={this.props.languages}
-            setLanguage={this.props.setLanguage}
-            selectedLanguage={this.props.selectedLanguage}
-          />
+          {this.renderLanguageSelector()}
         </Row>
         <Row className="justify-content-center mb-4">
-          <MasksSelector
-            addMask={this.props.addMask}
-            languages={this.props.languages}
-            selectedMasks={this.props.selectedMasks}
-            removeMask={this.props.removeMask}
-            selectedLanguage={this.props.selectedLanguage}
-          />
+          {this.renderMasksSelector()}
         </Row>
         <Row className="justify-content-center mb-4">
-          <StartButton
-            selectedMasks={this.props.selectedMasks}
-            selectedLanguage={this.props.selectedLanguage}
-            toggleTraining={this.props.toggleTraining}
-            trainingStarted={this.props.trainingStarted}
-          />
+          {this.renderStartButton()}
         </Row>
       </Container>
     );

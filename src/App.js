@@ -11,7 +11,7 @@ import {
 
 import {
   addMask,
-  createMasksNames,
+  addSelectedMasksNames,
   removeMask,
   setCurrentMask,
   setIntervalLength,
@@ -44,10 +44,10 @@ class App extends React.Component {
   renderTrainingApp = () => {
     return (
       <TrainingApp
-        createMasksNames={this.props.createMasksNames}
+        addSelectedMasksNames={this.props.addSelectedMasksNames}
         currentMask={this.props.currentMask}
         intervalLength={this.props.intervalLength}
-        masksNames={this.props.masksNames}
+        selectedMasksNames={this.props.selectedMasksNames}
         selectedLanguage={this.props.selectedLanguage}
         selectedMasks={this.props.selectedMasks}
         setCurrentMask={this.props.setCurrentMask}
@@ -96,7 +96,7 @@ const mapStateToProps = state => {
         intervalLength: state.intervalLength,
         languages: state.languages,
         selectedMasks:state.selectedMasks,
-        masksNames: state.masksNames,
+        selectedMasksNames: state.selectedMasksNames,
         selectedLanguage: state.selectedLanguage,
         stopwatchStarted: state.stopwatchStarted,
         timerId: state.timerId,
@@ -108,7 +108,7 @@ export default connect(
   mapStateToProps,
   {
     addMask,
-    createMasksNames,
+    addSelectedMasksNames,
     removeMask,
     setCurrentMask,
     setIntervalLength,

@@ -2,28 +2,51 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 
 class StartButton extends React.Component {
-    onClick = () => {
-        this.props.toggleTraining(this.props.trainingStarted);
-    }
+    renderLargeButton = properties => {
+        const { disabled, label, onClick } = properties;
 
-    getButtonState = () => {
-        return this.props.selectedMasks.length >= 1 ? false : true;
-    }
-
-    render = () => {
-        const disableButton = this.getButtonState();
-
-        return this.props.selectedLanguage ? (
+        return (
             <Button
-                active
-                disabled={disableButton}
-                onClick={this.onClick}
+                active={true}
+                disabled={disabled}
+                onClick={onClick}
                 size="lg"
                 variant="success"
             >
-                {this.props.selectedLanguage.startTraining}
+                {label}
             </Button>
-        ) : null;
+        );
+    }
+    
+    onClick = () => {
+        const { toggleTraining, trainingStarted } = this.props;
+
+        toggleTraining(trainingStarted);
+    }
+
+    isButtonDisabled = () => {
+        const { selectedMasks } = this.props;
+
+        return selectedMasks.length >= 1 ? false : true;
+    }
+
+    getButtonProps = selectedLanguage => {
+        const disabled = this.isButtonDisabled();
+        const label = selectedLanguage.startTraining;
+
+        return { disabled, label, onClick: this.onClick };
+    }
+
+    render = () => {
+        const { selectedLanguage } = this.props;
+
+        if(!selectedLanguage) {
+            return null;
+        }
+
+        const buttonProps = this.getButtonProps(selectedLanguage);
+
+        return this.renderLargeButton(buttonProps);
     }
 }
 

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import {
     ADD_MASK,
-    CREATE_MASKS_NAMES,
+    ADD_SELECTED_MASKS_NAMES,
     REMOVE_MASK,
     SELECTED_LANGUAGE,
     SET_CURRENT_MASK,
@@ -52,12 +52,12 @@ const selectedMasksReducer = (selectedMasks = [], action) => {
     return selectedMasks;
 }
 
-const selectedMasksNamesReducer = (masksNames = [], action) => {
-    if(action && action.type === CREATE_MASKS_NAMES) {
+const selectedMasksNamesReducer = (selectedMasksNames = [], action) => {
+    if(action && action.type === ADD_SELECTED_MASKS_NAMES) {
         return action.payload;
     }
 
-    return masksNames;
+    return selectedMasksNames;
 }
 
 const timerIdReducer = (timerId = null, action) => {
@@ -88,7 +88,7 @@ export default combineReducers({
     currentMask: currentMaskReducer,
     intervalLength: intervalLengthReducer,
     languages: languagesReducer,
-    masksNames: selectedMasksNamesReducer,
+    selectedMasksNames: selectedMasksNamesReducer,
     selectedLanguage: selectedLanguageReducer,
     selectedMasks: selectedMasksReducer,
     stopwatchStarted: toggleStopwatchReducer,

@@ -37,16 +37,22 @@ export const convertMinToMs = minutes => {
     return ((minutes*60)*1000);
 }
 
-export const getPropertyFromLanguageObject = 
-    (currentlySelectedLanguage, property, defaultPropertyValue) => {
-        return !currentlySelectedLanguage ? defaultPropertyValue : currentlySelectedLanguage[property];
-    }
+export const getPropertyFromLanguageObject = params => {
+    const {
+        selectedLanguage,
+        propertyName,
+        defaultPropertyValue
+    } = params;
 
-export const getRandomMask = masksNames => {
-    const numberOfMasks = masksNames.length;
+    return !selectedLanguage ?
+            defaultPropertyValue : selectedLanguage[propertyName];
+}
+
+export const getRandomMask = selectedMasksNames => {
+    const numberOfMasks = selectedMasksNames.length;
     const randomMaskIndex = randomIntFromInterval(0, numberOfMasks-1);
 
-    return masksNames[randomMaskIndex];
+    return selectedMasksNames[randomMaskIndex];
 }
 
 export const getSelectedLanguage = (languages, href) => {

@@ -1,6 +1,6 @@
 import {
     ADD_MASK,
-    CREATE_MASKS_NAMES,
+    ADD_SELECTED_MASKS_NAMES,
     REMOVE_MASK,
     SELECTED_LANGUAGE,
     SET_CURRENT_MASK,
@@ -17,10 +17,10 @@ export const addMask = mask => {
     }
 }
 
-export const createMasksNames = masksNames => {
+export const addSelectedMasksNames = selectedMasksNames => {
     return {
-        type: CREATE_MASKS_NAMES,
-        payload: masksNames
+        type: ADD_SELECTED_MASKS_NAMES,
+        payload: selectedMasksNames
     }
 }
 
