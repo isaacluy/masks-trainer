@@ -2,10 +2,6 @@ body {
     background-color: snow;
 }
 
-#welcome-message {
-    font-size: 3em;
-}
-
 #masks-selector {
     min-width: 310px;
 }

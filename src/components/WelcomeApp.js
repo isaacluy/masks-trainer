@@ -8,6 +8,20 @@ import StartButton from './StartButton';
 import { getPropertyFromLanguageObject } from '../utils/language-utils';
 
 class WelcomeApp extends React.Component {
+  renderExternalLink = () => {
+    const { languages, selectedLanguage } = this.props;
+    const linkText = selectedLanguage ? selectedLanguage.externalLinkText : languages[0].externalLinkText;
+
+    return (
+      <a
+        className="text-center"
+        href="http://canadianclowning.com/classes/"
+      >
+        <small>{linkText}</small>
+      </a>
+    );
+  }
+
   renderStartButton = () => {
     const {
       selectedMasks,
@@ -80,7 +94,7 @@ class WelcomeApp extends React.Component {
     return (
       <h1
         id="welcome-message"
-        className="text-center"
+        className="display-4 text-center"
       >
         {this.getWelcomeMessage()}
       </h1>
@@ -101,6 +115,9 @@ class WelcomeApp extends React.Component {
         </Row>
         <Row className="justify-content-center mb-4">
           {this.renderStartButton()}
+        </Row>
+        <Row className="justify-content-center">
+          {this.renderExternalLink()}
         </Row>
       </Container>
     );

@@ -3,6 +3,7 @@ export const languagesReducer = () => {
         {
             text: 'English',
             experience: 'Experience',
+            externalLinkText: 'Clown Through Mask',
             href: '/en',
             innocence: 'Innocence',
             selectAll: 'Select All',
@@ -14,6 +15,7 @@ export const languagesReducer = () => {
         {
             text: 'Español',
             experience: 'Experiencia',
+            externalLinkText: 'El payaso a través de la máscara',
             href: '/es',
             innocence: 'Inocencia',
             selectAll: 'Seleccionar todas',
@@ -25,6 +27,7 @@ export const languagesReducer = () => {
         {
             text: 'Português',
             experience: 'Experiência',
+            externalLinkText: 'Palhaço através de Máscara',
             href: '/pt',
             innocence: 'Inocência',
             selectAll: 'Seleccionar todas',
@@ -36,6 +39,7 @@ export const languagesReducer = () => {
         {
             text: 'Français',
             experience : 'Expérience',
+            externalLinkText: 'Le clown à travers le masque',
             href: '/fr',
             innocence : 'Innocence',
             selectAll: 'Choisir tous',
