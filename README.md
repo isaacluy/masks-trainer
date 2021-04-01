@@ -1,4 +1,4 @@
-# Theatre Exercises Table
+# Masks Trainer App (Multilingual and mobile ready)
 
 ## Description:
 
