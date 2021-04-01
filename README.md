@@ -6,7 +6,7 @@ This repo contains a web application I wrote to practice and remember some of th
 
 **Huge thanks to all the open projects I used to build this app**
 
-The app is hosted on [LINK COMING SOON]
+The app is automatically deployed from master and hosted on [Netlify](https://cutt.ly/masks-trainer)
 
 ![App Animation](https://raw.githubusercontent.com/isaacluy/masks-trainer/master/screenshots/00_app-animation.gif)
 
